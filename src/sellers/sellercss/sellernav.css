@@ -1,0 +1,49 @@
+/* Navcolor component CSS */
+.navbarwhite {
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: transparent; /* Ensure background is transparent */
+	color: #145039; /* Adjust text color for visibility over the banner */
+	margin-bottom: 28px;
+	font-weight: bold;
+	font-size: 1.4rem;
+}
+
+.navbargreen {
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent; /* Ensure background is transparent */
+	color: white; /* Adjust text color for visibility over the banner */
+	margin-bottom: 28px;
+}
+
+img {
+	padding: 14px;
+	height: 10rem;
+	width: auto;
+	margin-left: 15px;
+}
+#logo {
+	cursor: pointer;
+}
+
+.tabBar {
+	padding-right: 30px;
+	justify-content: space-between;
+}
+
+button {
+	font-size: 1.7rem;
+	font-weight: bold;
+	padding: 20px;
+	background-color: transparent;
+	border: none;
+	color: #145039;
+}
+button:hover {
+	cursor: pointer;
+}
