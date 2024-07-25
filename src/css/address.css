@@ -1,0 +1,28 @@
+.addressdiv {
+	display: block;
+	margin-left: 18%;
+}
+
+.postcode {
+	width: 88px;
+	height: 32px;
+	background: #04b04c;
+	margin: 10px auto;
+	padding: 0px;
+	color: white;
+	font-weight: bold;
+}
+.autoword {
+	#sample_postcode,
+	#sample_address,
+	#sample_extraAddress,
+	#sample_detailAddress {
+		line-height: 28px;
+		width: 95%;
+		justify-items: right;
+		margin-bottom: 4px;
+		border-radius: 5px;
+		border: 1px solid #ccc;
+		font-size: 13px;
+	}
+}

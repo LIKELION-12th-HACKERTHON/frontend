@@ -1,0 +1,242 @@
+/* --darkdarkgreen: "#0B1403";
+--darkgreen: "#203300";
+--green: "#41630F";
+--lessgreen: "#ABCA80";
+--pupurple: "58083C";
+023007
+green 015c13
+gray e1e2eb
+yellow f8d10a
+orange e49800 */
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	/* background-color: #f5f7fa; */
+	background-color: #fece00;
+	font-family: "Arial", sans-serif;
+}
+
+.navlogin {
+	display: flex;
+	margin-bottom: 40px;
+	justify-content: center;
+}
+
+.show_login,
+.show_signup {
+	width: 180px;
+	display: flex;
+	justify-content: center;
+	/* margin: 0 10px; */
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+
+.show_login:hover,
+.show_signup:hover,
+.show_login.active,
+.show_signup.active {
+	opacity: 1;
+}
+
+.show_login.active .btn,
+.show_signup.active .btn {
+	/* background-color: rgb(7, 151, 7); */
+	background-color: #04b04c;
+	color: #ffffff;
+	/* background-color: #ffffff;
+	color: #4daf85; */
+	font-weight: bolder;
+}
+
+.btn {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	border: none;
+	background-color: rgba(143, 226, 190, 0.588);
+	color: rgba(255, 255, 255, 0.635);
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#sgp {
+	border-radius: 10px 0px 0px 10px;
+}
+#lgn {
+	border-radius: 0px 10px 10px 0px;
+}
+
+.btn:hover {
+	background-color: #289868;
+	color: white;
+	transform: translateY(-2px);
+}
+
+.form1,
+.form2 {
+	width: 50vw;
+	min-width: 500px;
+	max-width: 800px;
+	height: min-content;
+	align-content: center;
+	padding: 20px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+form {
+	/* margin-top: 20px; */
+	display: flex;
+	flex-direction: column;
+	padding-left: 18px;
+	padding-right: 18px;
+	color: #289868;
+}
+.job {
+	display: inline-flex;
+	justify-content: space-around;
+	position: relative;
+	margin-bottom: 40px;
+	margin-top: 20px;
+}
+
+/* .owner,
+.customer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 17px;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.379);
+	transition: all 0.3s;
+	padding-bottom: 50px;
+	flex: 1;
+	position: relative;
+} */
+.owner,
+.customer {
+	display: flex; /* 버튼 구조 설정 */
+	align-items: center; /* 버튼 안에 내용물 중앙 정렬 */
+	padding: 12px 21px; /* 버튼 여백 설정 */
+	gap: 10px;
+	cursor: pointer;
+	color: #5e5e5ea5;
+	font-size: 15px;
+}
+input[type="radio"] {
+	height: 11px;
+}
+
+input[type="radio"]:checked + #customerLabel {
+	color: #58a758;
+	font-size: 30px;
+	font-weight: bolder;
+	transition: all 0.3s ease;
+	translate: -10rem -20px 30px;
+}
+
+input[type="radio"]:checked + #ownerLabel {
+	color: #58a758;
+	font-size: 30px;
+	font-weight: bolder;
+	transition: all 0.3s ease;
+	translate: 10rem -20px 30px;
+}
+
+#customer:checked {
+	accent-color: green;
+	transition: all 0.3s ease;
+	transform: translate(-21rem, -4px);
+}
+[type="radio"]:checked {
+	accent-color: green;
+	transition: all 0.3s ease;
+	translate: 10rem -10px 30px;
+}
+
+tr {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 40px;
+	margin-bottom: 15px;
+}
+#address {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 20px;
+	margin-bottom: 15px;
+}
+.addressdiv {
+	width: 100vw;
+	min-width: 350px;
+	display: flex;
+	justify-content: left;
+}
+
+th {
+	min-width: 60px;
+	width: 9%;
+	text-align: left;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+input {
+	flex: 0.8;
+	line-height: 25px;
+	padding: 8px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 13px;
+}
+
+#btns {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0px;
+	justify-content: space-between;
+	margin-top: 10px;
+	padding-left: 0;
+
+	.backbtn {
+		margin-top: 14px;
+		border-radius: 10px;
+		border: none;
+		height: 40px;
+		width: 280px;
+		cursor: pointer;
+		background-color: #04b04c74;
+		color: rgba(255, 255, 255, 0.835);
+		transition: background-color 0.3s ease, transform 0.3s ease;
+	}
+
+	.loginbtn {
+		margin-top: 2px;
+		border-radius: 10px;
+		border: none;
+		height: 40px;
+		width: 280px;
+		cursor: pointer;
+		background-color: #04b04c74;
+		color: rgba(255, 255, 255, 0.835);
+		transition: background-color 0.3s ease, transform 0.3s ease;
+	}
+	.backbtn:hover,
+	.loginbtn:hover {
+		background-color: #289868;
+		color: white;
+		transform: translateY(-2px);
+	}
+}
