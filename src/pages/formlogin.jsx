@@ -1,121 +1,89 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "../css/signup.css"
-import AddressForm from "../components/addressform"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../css/signup.css";
+import AddressForm from "../components/addressform";
 
 export default function FormLogin() {
-	const [showform, setShowForm] = useState("signup")
-	const navigate = useNavigate()
+	const [showform, setShowForm] = useState("signup");
+	const navigate = useNavigate();
+	const [formData, setFormData] = useState({
+		job: "",
+		name: "",
+		userid: "",
+		password: "",
+		email: "",
+		phnum: "",
+		address: "",
+		extraAddress: "",
+		sigungu: "",
+		detailAddress: "",
+	});
 
-	const handleShowSignup = () => {
-		setShowForm("signup")
-	}
-	const handleShowLogin = () => {
-		setShowForm("login")
-	}
+	const handleShowSignup = () => setShowForm("signup");
+	const handleShowLogin = () => setShowForm("login");
 	const handleClickBack = (event) => {
-		event.preventDefault()
-		navigate("/") // Main page path로 이동
-	}
+		event.preventDefault();
+		navigate("/"); // Navigate to the main page
+	};
 
-	const form1 = (
-		<div className='form1'>
-			<form>
-				<div className='job'>
-					<div className='owner'>
-						<input id='owner' name='job' type='radio' value='owner' />
-						<label for='owner' id='ownerLabel'>
-							사장님
-						</label>
-					</div>
+	const handleMultipleActions = (event) => {
+		handlelinkjob(event);
+		handleSubmit(event);
+	};
 
-					<div className='customer'>
-						<input id='customer' name='job' type='radio' value='customer' checked />
-						<label for='customer' id='customerLabel'>
-							고객
-						</label>
-					</div>
-				</div>
+	const handlelinkjob = (event) => {
+		event.preventDefault(); // Prevent the default form submission
+		const { job } = formData;
+		if (job === "owner") {
+			navigate("/seller");
+		} else {
+			navigate("/customer");
+		}
+	};
 
-				<tr>
-					<th>이름</th>
-					<input name='name' id='name' placeholder='name' autoComplete='off' required />
-				</tr>
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
 
-				<tr>
-					<th>아이디</th>
-					<input name='username' id='id' placeholder='id' autoComplete='off' required />
-				</tr>
+	const handleAddressSelect = (addressData) => {
+		setFormData((prevState) => ({
+			...prevState,
+			...addressData,
+		}));
+	};
 
-				<tr>
-					<th>비밀번호</th>
-					<input name='password' id='pw' placeholder='password' autoComplete='off' required />
-				</tr>
-
-				<tr>
-					<th>이메일</th>
-					<input name='email' id='email' placeholder='@gmail.com' autoComplete='none' required />
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<input name='phnum' id='phone' placeholder='010 -' autoComplete='off' required />
-				</tr>
-				<tr>
-					<th id='adth'>주소</th>
-					<AddressForm />
-				</tr>
-				<tr id='btns'>
-					<button className='loginbtn'>회원가입</button>
-					<button className='backbtn' onClick={handleClickBack}>
-						되돌아가기
-					</button>
-				</tr>
-			</form>
-		</div>
-	)
-
-	const form2 = (
-		<div className='form2'>
-			<form>
-				<div className='job'>
-					<div className='owner'>
-						<span className='owner'>
-							<input id='owner' name='job' type='radio' value='owner' />
-							<label for='owner' id='ownerLabel'>
-								사장님
-							</label>
-						</span>
-					</div>
-
-					<div className='customer'>
-						<span className='customer'>
-							<input id='customer' name='job' type='radio' value='customer' checked />
-							<label for='customer' id='customerLabel'>
-								고객
-							</label>
-						</span>
-					</div>
-				</div>
-
-				<tr>
-					<th>아이디</th>
-					<input name='username' placeholder='id' autoComplete='off' required />
-				</tr>
-
-				<tr>
-					<th>비밀번호</th>
-					<input name='password' placeholder='password' autoComplete='off' required />
-				</tr>
-
-				<tr id='btns'>
-					<button className='loginbtn'>로그인</button>
-					<button className='backbtn' onClick={handleClickBack}>
-						되돌아가기
-					</button>
-				</tr>
-			</form>
-		</div>
-	)
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const {
+			job,
+			name,
+			userid,
+			password,
+			email,
+			phnum,
+			address,
+			extraAddress,
+			sigungu,
+			detailAddress,
+		} = formData;
+		console.log(
+			job,
+			name,
+			userid,
+			password,
+			email,
+			phnum,
+			address,
+			extraAddress,
+			sigungu,
+			detailAddress
+		);
+		// Handle the form submission logic here (e.g., API call)
+	};
 
 	return (
 		<>
@@ -131,7 +99,185 @@ export default function FormLogin() {
 					</button>
 				</div>
 			</div>
-			{showform === "signup" ? form1 : form2}
+			{showform === "signup" ? (
+				<div className='form1'>
+					<form onSubmit={handleSubmit}>
+						<div className='job'>
+							<div className='owner'>
+								<input
+									id='owner'
+									name='job'
+									type='radio'
+									value='owner'
+									checked={formData.job === "owner"}
+									onChange={handleChange}
+								/>
+								<label htmlFor='owner' id='ownerLabel'>
+									사장님
+								</label>
+							</div>
+
+							<div className='customer'>
+								<input
+									id='customer'
+									name='job'
+									type='radio'
+									value='customer'
+									checked={formData.job === "customer"}
+									onChange={handleChange}
+								/>
+								<label htmlFor='customer' id='customerLabel'>
+									고객
+								</label>
+							</div>
+						</div>
+
+						<tr>
+							<th>이름</th>
+							<input
+								name='name'
+								id='name'
+								placeholder='name'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+
+						<tr>
+							<th>아이디</th>
+							<input
+								name='userid'
+								id='id'
+								placeholder='id'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+
+						<tr>
+							<th>비밀번호</th>
+							<input
+								name='password'
+								id='pw'
+								placeholder='password'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+
+						<tr>
+							<th>이메일</th>
+							<input
+								name='email'
+								id='email'
+								placeholder='@gmail.com'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+						<tr>
+							<th>전화번호</th>
+							<input
+								name='phnum'
+								id='phone'
+								placeholder='010 -'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+						<tr id='adth'>
+							<th>주소</th>
+							<AddressForm onAddressSelect={handleAddressSelect}></AddressForm>
+						</tr>
+						<tr id='btns'>
+							<td colSpan='2'>
+								<button type='submit' className='loginbtn' onClick={handleMultipleActions}>
+									회원가입
+								</button>
+								<button type='reset' className='backbtn' onClick={handleClickBack}>
+									되돌아가기
+								</button>
+							</td>
+						</tr>
+					</form>
+				</div>
+			) : (
+				<div className='form2'>
+					<form onSubmit={handleSubmit}>
+						<div className='job'>
+							<div className='owner'>
+								<span className='owner'>
+									<input
+										id='owner'
+										name='job'
+										type='radio'
+										value='owner'
+										checked={formData.job === "owner"}
+										onChange={handleChange}
+									/>
+									<label htmlFor='owner' id='ownerLabel'>
+										사장님
+									</label>
+								</span>
+							</div>
+
+							<div className='customer'>
+								<span className='customer'>
+									<input
+										id='customer'
+										name='job'
+										type='radio'
+										value='customer'
+										checked={formData.job === "customer"}
+										onChange={handleChange}
+									/>
+									<label htmlFor='customer' id='customerLabel'>
+										고객
+									</label>
+								</span>
+							</div>
+						</div>
+
+						<tr>
+							<th>아이디</th>
+							<input
+								name='userid'
+								placeholder='id'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+
+						<tr>
+							<th>비밀번호</th>
+							<input
+								name='password'
+								placeholder='password'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</tr>
+
+						<tr id='btns'>
+							<td colSpan='2'>
+								<button type='submit' className='loginbtn' onClick={handleMultipleActions}>
+									로그인
+								</button>
+								<button type='reset' className='backbtn' onClick={handleClickBack}>
+									되돌아가기
+								</button>
+							</td>
+						</tr>
+					</form>
+				</div>
+			)}
 		</>
-	)
+	);
 }

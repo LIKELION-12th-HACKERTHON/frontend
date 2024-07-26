@@ -43,7 +43,7 @@ html {
 		height: min-content;
 		flex-grow: 1;
 		object-fit: cover;
-		margin-left: 2px;
+		margin-left: 0px;
 		margin-right: -2px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0px -16px 20px -0 rgba(0, 0, 0, 0.19);
 		-webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 0%);
@@ -54,7 +54,7 @@ html {
 		height: auto;
 		flex-grow: 1;
 		object-fit: cover;
-		margin-left: 2px;
+		margin-left: -10px;
 		margin-right: -2px;
 	}
 	.roww {

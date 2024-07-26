@@ -1,27 +1,16 @@
-/* --darkdarkgreen: "#0B1403";
---darkgreen: "#203300";
---green: "#41630F";
---lessgreen: "#ABCA80";
---pupurple: "58083C";
-023007
-green 015c13
-gray e1e2eb
-yellow f8d10a
-orange e49800 */
-
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	margin: 0;
-	/* background-color: #f5f7fa; */
 	background-color: #fece00;
 	font-family: "Arial", sans-serif;
 }
 
 .navlogin {
 	display: flex;
+	margin-top: 80px;
 	margin-bottom: 40px;
 	justify-content: center;
 }
@@ -31,7 +20,6 @@ body {
 	width: 180px;
 	display: flex;
 	justify-content: center;
-	/* margin: 0 10px; */
 	opacity: 0.6;
 	transition: opacity 0.3s ease;
 }
@@ -45,11 +33,8 @@ body {
 
 .show_login.active .btn,
 .show_signup.active .btn {
-	/* background-color: rgb(7, 151, 7); */
 	background-color: #04b04c;
 	color: #ffffff;
-	/* background-color: #ffffff;
-	color: #4daf85; */
 	font-weight: bolder;
 }
 
@@ -67,11 +52,13 @@ body {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 #sgp {
-	border-radius: 10px 0px 0px 10px;
+	border-radius: 10px 0 0 10px;
 }
+
 #lgn {
-	border-radius: 0px 10px 10px 0px;
+	border-radius: 0 10px 10px 0;
 }
 
 .btn:hover {
@@ -85,83 +72,59 @@ body {
 	width: 50vw;
 	min-width: 500px;
 	max-width: 800px;
-	height: min-content;
-	align-content: center;
 	padding: 20px;
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* 추가: 수직 가운데 정렬 */
+	margin: auto; /* 추가: 수평 가운데 정렬 */
 }
 
 form {
-	/* margin-top: 20px; */
 	display: flex;
 	flex-direction: column;
+	width: 100%; /* 폼의 너비를 부모에 맞춤 */
 	padding-left: 18px;
 	padding-right: 18px;
 	color: #289868;
 }
+
 .job {
-	display: inline-flex;
+	display: flex;
 	justify-content: space-around;
 	position: relative;
 	margin-bottom: 40px;
 	margin-top: 20px;
 }
 
-/* .owner,
+.owner,
 .customer {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	font-size: 17px;
-	font-weight: 500;
-	color: rgba(0, 0, 0, 0.379);
-	transition: all 0.3s;
-	padding-bottom: 50px;
-	flex: 1;
-	position: relative;
-} */
-.owner,
-.customer {
-	display: flex; /* 버튼 구조 설정 */
-	align-items: center; /* 버튼 안에 내용물 중앙 정렬 */
-	padding: 12px 21px; /* 버튼 여백 설정 */
+	padding: 12px 21px;
 	gap: 10px;
 	cursor: pointer;
 	color: #5e5e5ea5;
 	font-size: 15px;
 }
+
 input[type="radio"] {
 	height: 11px;
 }
 
-input[type="radio"]:checked + #customerLabel {
-	color: #58a758;
-	font-size: 30px;
-	font-weight: bolder;
-	transition: all 0.3s ease;
-	translate: -10rem -20px 30px;
-}
-
+input[type="radio"]:checked + #customerLabel,
 input[type="radio"]:checked + #ownerLabel {
 	color: #58a758;
 	font-size: 30px;
 	font-weight: bolder;
 	transition: all 0.3s ease;
-	translate: 10rem -20px 30px;
 }
 
-#customer:checked {
+input[type="radio"]:checked {
 	accent-color: green;
 	transition: all 0.3s ease;
-	transform: translate(-21rem, -4px);
-}
-[type="radio"]:checked {
-	accent-color: green;
-	transition: all 0.3s ease;
-	translate: 10rem -10px 30px;
 }
 
 tr {
@@ -171,6 +134,7 @@ tr {
 	padding-left: 40px;
 	margin-bottom: 15px;
 }
+
 #address {
 	display: flex;
 	justify-content: space-between;
@@ -178,6 +142,7 @@ tr {
 	padding-left: 20px;
 	margin-bottom: 15px;
 }
+
 .addressdiv {
 	width: 100vw;
 	min-width: 350px;
@@ -205,38 +170,29 @@ input {
 #btns {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 0px;
-	justify-content: space-between;
 	margin-top: 10px;
 	padding-left: 0;
+}
 
-	.backbtn {
-		margin-top: 14px;
-		border-radius: 10px;
-		border: none;
-		height: 40px;
-		width: 280px;
-		cursor: pointer;
-		background-color: #04b04c74;
-		color: rgba(255, 255, 255, 0.835);
-		transition: background-color 0.3s ease, transform 0.3s ease;
-	}
+.backbtn,
+.loginbtn {
+	margin-top: 14px;
+	border-radius: 10px;
+	border: none;
+	height: 40px;
+	width: 280px;
+	cursor: pointer;
+	background-color: #04b04c74;
+	color: rgba(255, 255, 255, 0.835);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	line-height: 40px;
+	font-size: 1rem;
+	text-align: center;
+}
 
-	.loginbtn {
-		margin-top: 2px;
-		border-radius: 10px;
-		border: none;
-		height: 40px;
-		width: 280px;
-		cursor: pointer;
-		background-color: #04b04c74;
-		color: rgba(255, 255, 255, 0.835);
-		transition: background-color 0.3s ease, transform 0.3s ease;
-	}
-	.backbtn:hover,
-	.loginbtn:hover {
-		background-color: #289868;
-		color: white;
-		transform: translateY(-2px);
-	}
+.backbtn:hover,
+.loginbtn:hover {
+	background-color: #289868;
+	color: white;
+	transform: translateY(-2px);
 }

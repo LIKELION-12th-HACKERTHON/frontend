@@ -21,7 +21,10 @@
 	justify-content: center;
 	font-size: 100%;
 }
-
+.sellerinfo {
+	font-weight: bold;
+	font-size: 87%;
+}
 .info div {
 	display: flex;
 	justify-content: space-around;

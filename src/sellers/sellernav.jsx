@@ -28,11 +28,11 @@ function SellerNavwhite() {
 	);
 }
 
-function Navcolor() {
+function Sellernav() {
 	// const useGreenNav = true // Example condition
 	const useGreenNav = false; // Example condition
 
 	return <>{useGreenNav ? <SellerNavgreen /> : <SellerNavwhite />}</>;
 }
 
-export default Navcolor;
+export default Sellernav;
