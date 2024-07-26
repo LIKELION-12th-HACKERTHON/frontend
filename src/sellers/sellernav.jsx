@@ -10,7 +10,8 @@ function SellerNavgreen() {
 		<div className='navbargreen'>
 			<img src={logowhite} id='logo' alt='Logo' onClick={() => navigate("/seller")} />
 			<div className='tabBar'>
-				<span>My page</span>
+				<button onClick={() => navigate("/login")}>Login</button>
+				<button onClick={() => navigate("/sellershop")}>My page</button>
 			</div>
 		</div>
 	);
@@ -22,6 +23,7 @@ function SellerNavwhite() {
 		<div className='navbarwhite'>
 			<img src={logogreen} alt='Logo' id='logo' onClick={() => navigate("/seller")} />
 			<div className='tabBar'>
+				<button onClick={() => navigate("/login")}>Login</button>
 				<button onClick={() => navigate("/sellershop")}>My page</button>
 			</div>
 		</div>

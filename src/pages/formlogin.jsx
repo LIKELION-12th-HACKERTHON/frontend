@@ -122,6 +122,7 @@ export default function FormLogin() {
 
 	return (
 		<>
+			<button onClick={() => navigate("/")}>Homepage</button>
 			<div className='navlogin'>
 				<div className={`show_signup ${showform === "signup" ? "active" : ""}`}>
 					<button className='btn' id='sgp' onClick={handleShowSignup}>
