@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../css/signup.css";
 import AddressForm from "../components/addressform";
 
@@ -33,7 +34,7 @@ export default function FormLogin() {
 	};
 
 	const handlelinkjob = (event) => {
-		event.preventDefault(); // Prevent the default form submission
+		event.preventDefault();
 		const { job } = formData;
 		if (job === "owner") {
 			navigate("/seller");
@@ -72,8 +73,6 @@ export default function FormLogin() {
 			sigungu,
 			detailAddress,
 		} = formData;
-
-		// 비밀번호 확인 검사
 		if (password1 !== password2) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return;
@@ -84,7 +83,8 @@ export default function FormLogin() {
 			job,
 			username,
 			email,
-			password: password1, // 서버에 보낼 때는 확인 비밀번호 제외
+			password1,
+			password2, // 서버에 확인 비밀번호도 전송
 			nickname,
 			phone_number,
 			address,
@@ -95,26 +95,17 @@ export default function FormLogin() {
 
 		try {
 			// 회원가입 API 요청
-			const response = await fetch("https://ourvege.shop/member/signup/", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(requestData),
-			});
+			const response = await axios.post("https://ourvege.shop/member/signup/", requestData);
 
-			if (!response.ok) {
+			if (response.status !== 200) {
 				// 서버 응답이 정상적이지 않은 경우
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 
-			const data = await response.json();
-
 			// 회원가입 성공 처리
 			alert("회원가입이 성공적으로 완료되었습니다.");
-			navigate("/login"); // 로그인 페이지로 이동 또는 다른 동작
+			navigate("/login");
 		} catch (error) {
-			// 에러 처리
 			console.error("회원가입 중 오류가 발생했습니다:", error);
 			alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
 		}
