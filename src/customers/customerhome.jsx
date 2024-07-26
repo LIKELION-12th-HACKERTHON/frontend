@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/customerhome.css';
+import Searchbar from "./searchbar";
 
 export default function CustomerHome() {
   return(
@@ -11,7 +12,11 @@ export default function CustomerHome() {
           <span>로그아웃</span>
         </div>
       </div>
-      <h1>start!</h1>
+      <div>
+        <h1>어떤 지역의 가게를 찾으시나요?</h1>
+        <Searchbar/>
+        <p>자주 찾는 지역</p>
+      </div>
     </div>
   )
 }

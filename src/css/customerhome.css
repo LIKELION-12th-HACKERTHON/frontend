@@ -6,16 +6,18 @@ body {
 
 .header {
   width: 100vw;
-  background-color: #187c27;
+  background-color: #77A68B;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+  color: #17403C;
+
   h2 {
     padding-left: 20px;
   }
 
   span {
     margin: 15px;
+    font-weight: 800;
   }
 }
