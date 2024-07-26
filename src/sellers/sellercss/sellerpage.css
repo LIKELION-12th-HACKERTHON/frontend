@@ -1,0 +1,77 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.sellerid {
+	width: 18vw;
+	height: min-content;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid;
+	box-shadow: 5px 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	border-radius: 10px;
+	margin-right: 20px;
+	.nameinfo {
+		width: 14vw;
+		font-size: 22px;
+	}
+}
+
+.sellerid:hover {
+	transform: translateY(-4px);
+}
+
+.main-container {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: 10px;
+	max-width: 100vw;
+	.bannerveg {
+		position: relative;
+		top: 0px;
+		width: 60vw;
+		height: min-content;
+		flex-grow: 1;
+		object-fit: cover;
+		margin-left: 2px;
+		margin-right: -2px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0px -16px 20px -0 rgba(0, 0, 0, 0.19);
+		-webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 0%);
+		mask-image: linear-gradient(to top, black 89%, transparent 100%);
+	}
+	.bannerveg1 {
+		width: 100vw;
+		height: auto;
+		flex-grow: 1;
+		object-fit: cover;
+		margin-left: 2px;
+		margin-right: -2px;
+	}
+	.roww {
+		/* margin-left: 5rem;
+		padding-left: 5rem; */
+		display: flex;
+	}
+}
+.graph {
+	height: 28vw;
+	/* flex-grow: 1; */
+	object-fit: contain;
+	margin-top: 10px;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
+h1 {
+	padding-left: 30px;
+}
