@@ -40,3 +40,18 @@
 .read-the-docs {
 	color: #888;
 }
+
+@font-face {
+	font-family: "AppleChancery";
+	src: url("./stylefont/AppleChancery.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "AppleMyungjo";
+	src: url("./stylefont/AppleMyungjo.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Bodoni72Oldstyle";
+	src: url("./stylefont/Bodoni72Oldstyle.ttf") format("truetype");
+}
