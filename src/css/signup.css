@@ -41,6 +41,8 @@ body {
 .btn {
 	width: 100%;
 	height: 40px;
+	line-height: 40px;
+	padding: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -50,7 +52,6 @@ body {
 	color: rgba(255, 255, 255, 0.635);
 	cursor: pointer;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #sgp {
@@ -78,14 +79,14 @@ body {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* 추가: 수직 가운데 정렬 */
-	margin: auto; /* 추가: 수평 가운데 정렬 */
+	align-items: center;
+	margin: auto;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
-	width: 100%; /* 폼의 너비를 부모에 맞춤 */
+	width: 100%;
 	padding-left: 18px;
 	padding-right: 18px;
 	color: #289868;
@@ -127,7 +128,7 @@ input[type="radio"]:checked {
 	transition: all 0.3s ease;
 }
 
-tr {
+.formdivdiv {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -150,7 +151,7 @@ tr {
 	justify-content: left;
 }
 
-th {
+.thdiv {
 	min-width: 60px;
 	width: 9%;
 	text-align: left;
@@ -179,6 +180,7 @@ input {
 	margin-top: 14px;
 	border-radius: 10px;
 	border: none;
+	padding: 0;
 	height: 40px;
 	width: 280px;
 	cursor: pointer;

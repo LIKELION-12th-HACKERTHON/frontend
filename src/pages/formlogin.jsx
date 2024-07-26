@@ -8,11 +8,12 @@ export default function FormLogin() {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		job: "",
-		name: "",
-		userid: "",
-		password: "",
+		username: "",
 		email: "",
-		phnum: "",
+		password1: "",
+		password2: "",
+		nickname: "",
+		phone_number: "",
 		address: "",
 		extraAddress: "",
 		sigungu: "",
@@ -56,33 +57,67 @@ export default function FormLogin() {
 		}));
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const {
 			job,
-			name,
-			userid,
-			password,
+			username,
 			email,
-			phnum,
+			password1,
+			password2,
+			nickname,
+			phone_number,
 			address,
 			extraAddress,
 			sigungu,
 			detailAddress,
 		} = formData;
-		console.log(
+
+		// 비밀번호 확인 검사
+		if (password1 !== password2) {
+			alert("비밀번호가 일치하지 않습니다.");
+			return;
+		}
+
+		// API 요청을 위한 데이터 구성
+		const requestData = {
 			job,
-			name,
-			userid,
-			password,
+			username,
 			email,
-			phnum,
+			password: password1, // 서버에 보낼 때는 확인 비밀번호 제외
+			nickname,
+			phone_number,
 			address,
 			extraAddress,
 			sigungu,
-			detailAddress
-		);
-		// Handle the form submission logic here (e.g., API call)
+			detailAddress,
+		};
+
+		try {
+			// 회원가입 API 요청
+			const response = await fetch("https://ourvege.shop/member/signup/", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(requestData),
+			});
+
+			if (!response.ok) {
+				// 서버 응답이 정상적이지 않은 경우
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			const data = await response.json();
+
+			// 회원가입 성공 처리
+			alert("회원가입이 성공적으로 완료되었습니다.");
+			navigate("/login"); // 로그인 페이지로 이동 또는 다른 동작
+		} catch (error) {
+			// 에러 처리
+			console.error("회원가입 중 오류가 발생했습니다:", error);
+			alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
+		}
 	};
 
 	return (
@@ -132,44 +167,19 @@ export default function FormLogin() {
 							</div>
 						</div>
 
-						<tr>
-							<th>이름</th>
+						<div className='formdivdiv'>
+							<div className='thdiv'>이름</div>
 							<input
-								name='name'
+								name='username'
 								id='name'
 								placeholder='name'
 								autoComplete='off'
 								required
 								onChange={handleChange}
 							/>
-						</tr>
-
-						<tr>
-							<th>아이디</th>
-							<input
-								name='userid'
-								id='id'
-								placeholder='id'
-								autoComplete='off'
-								required
-								onChange={handleChange}
-							/>
-						</tr>
-
-						<tr>
-							<th>비밀번호</th>
-							<input
-								name='password'
-								id='pw'
-								placeholder='password'
-								autoComplete='off'
-								required
-								onChange={handleChange}
-							/>
-						</tr>
-
-						<tr>
-							<th>이메일</th>
+						</div>
+						<div className='formdivdiv'>
+							<div className='thdiv'>이메일</div>
 							<input
 								name='email'
 								id='email'
@@ -178,32 +188,67 @@ export default function FormLogin() {
 								required
 								onChange={handleChange}
 							/>
-						</tr>
-						<tr>
-							<th>전화번호</th>
+						</div>
+						<div className='formdivdiv'>
+							<div className='thdiv'>비밀번호</div>
 							<input
-								name='phnum'
+								name='password1'
+								id='pw'
+								placeholder='password'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='formdivdiv'>
+							<div className='thdiv'>비밀번호 재확인</div>
+							<input
+								name='password2'
+								id='pw'
+								placeholder='password'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='formdivdiv'>
+							<div className='thdiv'>닉네임</div>
+							<input
+								name='nickname'
+								id='nickname'
+								placeholder='nickname'
+								autoComplete='off'
+								required
+								onChange={handleChange}
+							/>
+						</div>
+
+						<div className='formdivdiv'>
+							<div className='thdiv'>전화번호</div>
+							<input
+								name='phone_number'
 								id='phone'
 								placeholder='010 -'
 								autoComplete='off'
 								required
 								onChange={handleChange}
 							/>
-						</tr>
-						<tr id='adth'>
-							<th>주소</th>
+						</div>
+						<div className='formdivdiv' id='adth'>
+							<div className='thdiv'>주소</div>
 							<AddressForm onAddressSelect={handleAddressSelect}></AddressForm>
-						</tr>
-						<tr id='btns'>
-							<td colSpan='2'>
-								<button type='submit' className='loginbtn' onClick={handleMultipleActions}>
+						</div>
+						<div className='formdivdiv' id='btns'>
+							<div className='trspan' colSpan='2'>
+								<button type='submit' className='loginbtn'>
+									{/* onClick={handleMultipleActions} */}
 									회원가입
 								</button>
 								<button type='reset' className='backbtn' onClick={handleClickBack}>
 									되돌아가기
 								</button>
-							</td>
-						</tr>
+							</div>
+						</div>
 					</form>
 				</div>
 			) : (
@@ -243,38 +288,39 @@ export default function FormLogin() {
 							</div>
 						</div>
 
-						<tr>
-							<th>아이디</th>
+						<div className='formdivdiv'>
+							<div className='thdiv'>이메일</div>
 							<input
-								name='userid'
-								placeholder='id'
+								name='email'
+								placeholder='email@naver.com'
 								autoComplete='off'
 								required
 								onChange={handleChange}
 							/>
-						</tr>
+						</div>
 
-						<tr>
-							<th>비밀번호</th>
+						<div className='formdivdiv'>
+							<div className='thdiv'>비밀번호</div>
 							<input
-								name='password'
+								name='password1'
 								placeholder='password'
 								autoComplete='off'
 								required
 								onChange={handleChange}
 							/>
-						</tr>
+						</div>
 
-						<tr id='btns'>
-							<td colSpan='2'>
-								<button type='submit' className='loginbtn' onClick={handleMultipleActions}>
+						<div className='formdivdiv' id='btns'>
+							<div className='trspan' colSpan='2'>
+								<button type='submit' className='loginbtn'>
+									{/* onClick={handleMultipleActions */}
 									로그인
 								</button>
 								<button type='reset' className='backbtn' onClick={handleClickBack}>
 									되돌아가기
 								</button>
-							</td>
-						</tr>
+							</div>
+						</div>
 					</form>
 				</div>
 			)}
