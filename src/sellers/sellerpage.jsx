@@ -1,5 +1,5 @@
 import React from "react";
-import Navcolor from "./sellernav.jsx";
+import Sellernav from "./sellernav.jsx";
 import banner from "../sellers/sellerphotos/vegebanner4.png";
 import banner1 from "../sellers/sellerphotos/vegebanner.png";
 import mainbanner from "../sellers/sellerphotos/vegebanner3.png";
@@ -15,8 +15,8 @@ function SellerPage() {
 
 	return (
 		<>
-			<Navcolor />
-			<StyledDiv />
+			<Sellernav />
+			{/* <StyledDiv /> */}
 			<div className='main-container'>
 				<img src={mainbanner} className='bannerveg1' alt='vegebanner' />
 

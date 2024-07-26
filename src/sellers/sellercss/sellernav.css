@@ -6,7 +6,7 @@
 	align-items: center;
 	background-color: transparent; /* Ensure background is transparent */
 	color: #145039; /* Adjust text color for visibility over the banner */
-	margin-bottom: 28px;
+	margin-bottom: 1rem;
 	font-weight: bold;
 	font-size: 1.4rem;
 }
@@ -18,12 +18,12 @@
 	align-items: center;
 	background-color: transparent; /* Ensure background is transparent */
 	color: white; /* Adjust text color for visibility over the banner */
-	margin-bottom: 28px;
+	margin-bottom: 1rem;
 }
 
 img {
 	padding: 14px;
-	height: 10rem;
+	height: 6.5rem;
 	width: auto;
 	margin-left: 15px;
 }
@@ -37,7 +37,7 @@ img {
 }
 
 button {
-	font-size: 1.7rem;
+	font-size: 1.4rem;
 	font-weight: bold;
 	padding: 20px;
 	background-color: transparent;

@@ -13,10 +13,11 @@ function Sellerid() {
 			</div>
 			<div className='info'>
 				<div className='nameinfo'>
-					<strong>USERNAME:</strong> <strong>STUART</strong>
+					<div className='sellerinfo'>USERNAME:</div> <div className='sellerinfo'>STUART</div>
 				</div>
 				<div className='nameinfo'>
-					<strong>USERSHOP:</strong> <strong>썹웨이</strong>
+					<div className='sellerinfo'>USERSHOP:</div>{" "}
+					<div className='sellerinfo'>월남쌈&샤브샤브</div>
 				</div>
 				<div>
 					<button onClick={() => navigate("/sellershop")}>나의 가게로 바로가기</button>

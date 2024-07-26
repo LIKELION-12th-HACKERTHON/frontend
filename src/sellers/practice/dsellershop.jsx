@@ -18,6 +18,12 @@ const ProductContainer = styled.div`
 	justify-content: center;
 	gap: 20px;
 `;
+const Buttonedit = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	width: 45vw;
+	margin-bottom: 1rem;
+`;
 
 const ProductCard = styled.div`
 	width: 45%; // Adjust width to fit two items per row
@@ -53,6 +59,11 @@ const Dsellershop = () => {
 	return (
 		<div className='sellershop'>
 			<h1>가게 재고 파악</h1>
+
+			<Buttonedit>
+				<button className='editbuttonsellershop'>수정</button>
+			</Buttonedit>
+
 			<ProductContainer>
 				{products.map((product) => (
 					<ProductCard key={product.id}>

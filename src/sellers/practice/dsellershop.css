@@ -29,15 +29,29 @@
 .quantity-control button {
 	width: 30px;
 	height: 30px;
+	padding: 0;
 	background-color: #f44336;
 	color: white;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	align-items: center;
 }
 
 .quantity-control span {
 	width: 30px;
 	display: inline-block;
 	text-align: center;
+}
+
+.editbuttonsellershop {
+	border: 1px solid;
+	font-size: 1rem;
+	background-color: #5eaa5f;
+	margin: 5px;
+	width: max-content;
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
 }
