@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/customerhome.css';
-import Searchbar from "./searchbar";
+import { Outlet } from "react-router-dom";
 import homeimg from "./img/customerhomeBanner1.jpg";
 
 export default function CustomerHome() {
@@ -16,11 +16,7 @@ export default function CustomerHome() {
       <div className="homebanner">
         <img src={homeimg}/>
       </div>
-      <div>
-        <h1>어떤 지역의 가게를 찾으시나요?</h1>
-        <Searchbar/>
-        <p>자주 찾는 지역</p>
-      </div>
+      <Outlet />
     </div>
   )
 }
