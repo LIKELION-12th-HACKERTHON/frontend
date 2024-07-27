@@ -6,7 +6,11 @@ import AddressForm from "../components/addressform";
 
 export default function FormLogin() {
 	const navigate = useNavigate();
-
+	const [address, setAddress] = useState({
+		city: "",
+		district: "",
+		dong: "",
+	});
 	const [formData, setFormData] = useState({
 		username: "",
 		email: "",
@@ -27,13 +31,10 @@ export default function FormLogin() {
 			.post(
 				API,
 				{
-					username: formData.username,
-					email: formData.email,
-					password1: formData.password1,
-					password2: formData.password2,
-					nickname: formData.nickname,
-					phone_number: formData.phone_number,
-					seller: formData.seller,
+					...formData,
+					city: address.city, // city 필드 추가
+					district: address.district, // district 필드 추가
+					dong: address.dong, // dong 필드 추가
 				},
 				{
 					headers: {
@@ -55,31 +56,6 @@ export default function FormLogin() {
 				console.log(error.response.data);
 			});
 	};
-
-	// const loginAPI = (uesrname, password) => {
-	// 	return function (dispatch, getState, { history }) {
-	// 		console.log(username, password);
-	// 		// const API = "https://ourvege.store/member/signup/";
-	// 		axios.post(
-	// 			API,
-	// 			{
-	// 				username: username,
-	// 				password: password,
-	// 			},
-	// 			{
-	// 				headers: {
-	// 					"Content-Type": "application/json",
-	// 					Accept: "application/json", //현재 서버한테 보내는 데이터 타입
-	// 					"Access-Control-Allow-Origin": "*",
-	// 				},
-	// 			})
-	// 			.then ((response) => {
-	// 				console.log(response)
-	// 				console.log(response.data)
-	// 			})
-	// 		);
-	// 	};
-	// };
 
 	const [showform, setShowForm] = useState("signup");
 	const handleShowSignup = () => {
@@ -204,7 +180,7 @@ export default function FormLogin() {
 					<div className='thdiv' id='adth'>
 						주소
 					</div>
-					<AddressForm />
+					<AddressForm onAddressSelect={setAddress} />
 				</div>
 
 				<div className='formdivdiv' id='btns'>
