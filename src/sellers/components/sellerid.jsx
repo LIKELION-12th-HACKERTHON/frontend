@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../sellercss/sellerid.css";
 import chefphoto from "../sellercss/minions.webp";
 import { useNavigate } from "react-router-dom";
+import useMemberStore from "../../store/memberStore";
 
 function Sellerid() {
 	const navigate = useNavigate();
+	const memberStore = useMemberStore();
+
+	useEffect(() => {
+		console.log(`===시작===`);
+		console.log(memberStore.loginMember);
+	}, []);
 
 	return (
 		<div className='sellerid'>
@@ -13,7 +20,8 @@ function Sellerid() {
 			</div>
 			<div className='info'>
 				<div className='nameinfo'>
-					<div className='sellerinfo'>USERNAME:</div> <div className='sellerinfo'>STUART</div>
+					<div className='sellerinfo'>USERNAME:</div>{" "}
+					<div className='sellerinfo'>{memberStore.loginMember.username}</div>
 				</div>
 				<div className='nameinfo'>
 					<div className='sellerinfo'>USERSHOP:</div>{" "}

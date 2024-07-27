@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/signup.css";
 import AddressForm from "../components/addressform";
+import useMemberStore from "../store/memberStore";
 
 export default function FormLogin() {
+	const memberStore = useMemberStore();
+
 	const navigate = useNavigate();
 	const [address, setAddress] = useState({
 		city: "",
@@ -57,6 +60,24 @@ export default function FormLogin() {
 			});
 	};
 
+	const login = async (event) => {
+		event.preventDefault();
+		const API = "https://ourvege.store/member/login/";
+		try {
+			const response = await axios.post(API, {
+				username: formData.username,
+				email: formData.email,
+				password: formData.password,
+			});
+			console.log("로그인성공", response.data.user.username);
+			navigate(`/sellershop`);
+			//상태관리에 저장
+			memberStore.setLoginMember(response.data.user);
+		} catch (error) {
+			console.error("로그인실패", error.response?.data || error.message);
+		}
+	};
+
 	const [showform, setShowForm] = useState("signup");
 	const handleShowSignup = () => {
 		setShowForm("signup");
@@ -73,6 +94,10 @@ export default function FormLogin() {
 		});
 	};
 
+	const handlepage = (event) => {
+		event.preventDefault();
+		navigate("/seller");
+	};
 	const handleClickBack = (event) => {
 		event.preventDefault();
 		navigate("/"); // Main page path로 이동
@@ -197,7 +222,7 @@ export default function FormLogin() {
 
 	const form2 = (
 		<div className='form2'>
-			<form>
+			<form onSubmit={login}>
 				<div className='job'>
 					<div className='owner'>
 						<span className='owner'>
@@ -223,6 +248,17 @@ export default function FormLogin() {
 					<input
 						name='username'
 						placeholder='id'
+						autoComplete='off'
+						onChange={handleChange}
+						required
+					/>
+				</div>
+
+				<div className='formdivdiv'>
+					<div className='thdiv'>이메일</div>
+					<input
+						name='email'
+						placeholder='email'
 						autoComplete='off'
 						onChange={handleChange}
 						required
