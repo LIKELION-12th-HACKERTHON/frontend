@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../css/address.css";
 
-const user = {
-	name: "tom",
-	address: "",
-};
-
 function AddressForm({ onAddressSelect }) {
 	const [detailAddress, setDetailAddress] = useState("");
 
 	useEffect(() => {
-		// Load Daum Postcode script dynamically
 		const script = document.createElement("script");
 		script.src = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 		script.async = true;
@@ -46,18 +40,14 @@ function AddressForm({ onAddressSelect }) {
 				if (addressElement) addressElement.value = addr;
 				if (extraAddressElement) extraAddressElement.value = extraAddr;
 
-				let usergooaddress = data.sigungu || "";
-
-				user.address = addr + extraAddr;
-
-				// Call the parent callback with the address data
+				// Pass the selected address data to the parent component
 				if (onAddressSelect) {
 					onAddressSelect({
 						postcode: data.zonecode,
-						address: addr,
-						extraAddress: extraAddr,
-						sigungu: usergooaddress,
-						detailAddress, // Include the detailed address entered by the user
+						city: data.sido || "",
+						district: data.sigungu || "",
+						dong: data.bname || "",
+						detail_location: detailAddress,
 					});
 				}
 			},
@@ -65,11 +55,6 @@ function AddressForm({ onAddressSelect }) {
 	};
 
 	const handleClick = () => {
-		// Clear the input fields
-		document.getElementById("sample_postcode").value = "";
-		document.getElementById("sample_address").value = "";
-		document.getElementById("sample_extraAddress").value = "";
-		// Execute the Daum Postcode function
 		sample_execDaumPostcode();
 	};
 
@@ -84,13 +69,7 @@ function AddressForm({ onAddressSelect }) {
 				<input type='text' id='sample_postcode' placeholder='우편번호' readOnly />
 				<input type='text' id='sample_address' placeholder='주소' readOnly />
 				<input type='text' id='sample_extraAddress' placeholder='참고항목' readOnly />
-				<input
-					type='text'
-					id='sample_detailAddress'
-					placeholder='상세주소'
-					value={detailAddress}
-					onChange={handleDetailAddressChange}
-				/>
+				<input type='text' id='sample_detailAddress' placeholder='상세주소' />
 			</div>
 		</div>
 	);
