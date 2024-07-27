@@ -8,7 +8,13 @@ function SellerNavgreen() {
 	const navigate = useNavigate();
 	return (
 		<div className='navbargreen'>
-			<img src={logowhite} id='logo' alt='Logo' onClick={() => navigate("/seller")} />
+			<img
+				src={logowhite}
+				className='imgb'
+				id='logo'
+				alt='Logo'
+				onClick={() => navigate("/seller")}
+			/>
 			<div className='tabBar'>
 				<button onClick={() => navigate("/login")}>Login</button>
 				<button onClick={() => navigate("/sellershop")}>My page</button>
@@ -21,7 +27,13 @@ function SellerNavwhite() {
 	const navigate = useNavigate();
 	return (
 		<div className='navbarwhite'>
-			<img src={logogreen} alt='Logo' id='logo' onClick={() => navigate("/seller")} />
+			<img
+				src={logogreen}
+				className='imgb'
+				alt='Logo'
+				id='logo'
+				onClick={() => navigate("/seller")}
+			/>
 			<div className='tabBar'>
 				<button onClick={() => navigate("/login")}>Login</button>
 				<button onClick={() => navigate("/sellershop")}>My page</button>

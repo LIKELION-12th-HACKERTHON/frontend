@@ -1,5 +1,5 @@
 import React from "react";
-import Navcolor from "./sellernav.jsx";
+import Sellernav from "./sellernav.jsx";
 import Sellerid from "./components/sellerid.jsx";
 import styled from "styled-components";
 import Dsellershop from "./practice/dsellershop.jsx";
@@ -21,7 +21,7 @@ const IdCard = styled.div`
 export default function Sellershop() {
 	return (
 		<>
-			<Navcolor />
+			<Sellernav />
 			<h1>사장님의 가게 현황</h1>
 			<Maincontents>
 				<Menunav />

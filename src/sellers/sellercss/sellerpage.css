@@ -7,28 +7,6 @@ html {
 	padding: 0;
 }
 
-.sellerid {
-	width: 18vw;
-	height: min-content;
-	background-color: rgb(255, 255, 255);
-	border: 1px solid;
-	box-shadow: 5px 5px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 20px;
-	border-radius: 10px;
-	margin-right: 20px;
-	.nameinfo {
-		width: 14vw;
-		font-size: 22px;
-	}
-}
-
-.sellerid:hover {
-	transform: translateY(-4px);
-}
-
 .main-container {
 	align-items: stretch;
 	display: flex;
