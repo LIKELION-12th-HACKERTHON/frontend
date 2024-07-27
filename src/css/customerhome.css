@@ -1,23 +1,45 @@
 body {
   display: flex;
+  justify-content: center;
   background-color: white;
   align-items: flex-start;
 }
 
+.customer-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .header {
   width: 100vw;
-  background-color: #77A68B;
+  max-width: 1500px;
+  /* background-color: #77A68B; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #17403C;
 
   h2 {
-    padding-left: 20px;
+    margin-left: 20px;
   }
 
   span {
     margin: 15px;
     font-weight: 800;
   }
+}
+
+.homebanner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  img {
+    width: 90vw;
+    height: auto;
+    object-fit: contain;
+    margin: 0;
+  }
+  
 }
