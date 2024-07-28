@@ -1,6 +1,6 @@
 .addressdiv {
 	display: block;
-	margin-left: 18%;
+	margin-left: 25%;
 }
 
 .postcode {
@@ -11,6 +11,7 @@
 	padding: 0px;
 	color: white;
 	font-weight: bold;
+	margin-left: 20px;
 }
 .autoword {
 	#sample_postcode,
@@ -18,11 +19,16 @@
 	#sample_extraAddress,
 	#sample_detailAddress {
 		line-height: 28px;
-		width: 95%;
+		position: relatvs;
+		width: 88%;
 		justify-items: right;
 		margin-bottom: 4px;
-		border-radius: 5px;
 		border: 1px solid #ccc;
+		border-radius: 0%;
 		font-size: 13px;
+		border-top: 0px;
+		border-right: 0px;
+		border-left: 0px;
+		border-bottom-style: 1px solid;
 	}
 }

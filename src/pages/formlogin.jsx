@@ -4,10 +4,13 @@ import axios from "axios";
 import "../css/signup.css";
 import AddressForm from "../components/addressform";
 import useMemberStore from "../store/memberStore";
+import shopimg from "../sellers/sellerphotos/shoprestraunt.png";
+import clientimg from "../sellers/sellerphotos/client.png";
+import Sellernav from "../sellers/sellernav";
+import Form1s from "../sellers/components/Form1s";
 
 export default function FormLogin() {
 	const memberStore = useMemberStore();
-
 	const navigate = useNavigate();
 	const [address, setAddress] = useState({
 		city: "",
@@ -23,6 +26,7 @@ export default function FormLogin() {
 		phone_number: "",
 		seller: "구매자",
 	});
+	const [image, setImage] = useState(clientimg); // 초기 이미지를 고객 이미지로 설정
 
 	const signupAPI = (event) => {
 		event.preventDefault();
@@ -35,9 +39,9 @@ export default function FormLogin() {
 				API,
 				{
 					...formData,
-					city: address.city, // city 필드 추가
-					district: address.district, // district 필드 추가
-					dong: address.dong, // dong 필드 추가
+					city: address.city,
+					district: address.district,
+					dong: address.dong,
 				},
 				{
 					headers: {
@@ -65,11 +69,11 @@ export default function FormLogin() {
 		const API = "https://ourvege.store/member/login/";
 		try {
 			const response = await axios.post(API, {
+				seller: formData.seller,
 				username: formData.username,
-				email: formData.email,
 				password: formData.password,
 			});
-			console.log("로그인성공", response.data.user.username);
+			console.log("로그인성공", response.data.user.username, response.data.user.nickname);
 			navigate(`/sellershop`);
 			//상태관리에 저장
 			memberStore.setLoginMember(response.data.user);
@@ -78,7 +82,7 @@ export default function FormLogin() {
 		}
 	};
 
-	const [showform, setShowForm] = useState("signup");
+	const [showform, setShowForm] = useState("login");
 	const handleShowSignup = () => {
 		setShowForm("signup");
 	};
@@ -87,33 +91,42 @@ export default function FormLogin() {
 	};
 
 	const handleChange = (e) => {
-		console.log(e.target.value);
+		const { name, value } = e.target;
+		console.log(value);
 		setFormData({
 			...formData,
-			[e.target.name]: e.target.value,
+			[name]: value,
 		});
+
+		// 'seller' 값이 변경될 때 이미지를 변경
+		if (name === "seller") {
+			showImg(value);
+		}
 	};
 
-	const handlepage = (event) => {
-		event.preventDefault();
-		navigate("/seller");
+	const showImg = (seller) => {
+		if (seller === "구매자") {
+			setImage(clientimg);
+		} else if (seller === "사장님" || seller === "판매자") {
+			setImage(shopimg);
+		}
 	};
+
 	const handleClickBack = (event) => {
 		event.preventDefault();
 		navigate("/"); // Main page path로 이동
 	};
 
 	const form1 = (
-		<div className='form1'>
-			<form onSubmit={signupAPI}>
+		<div className='jobform'>
+			<div className='photoandjob'>
 				<div className='job'>
 					<div className='owner'>
 						<input id='owner' name='seller' type='radio' value='판매자' onChange={handleChange} />
 						<label htmlFor='owner' id='ownerLabel'>
-							사장님
+							저는 가게를 운영하는 사장이예요
 						</label>
 					</div>
-
 					<div className='customer'>
 						<input
 							id='customer'
@@ -124,170 +137,186 @@ export default function FormLogin() {
 							onChange={handleChange}
 						/>
 						<label htmlFor='customer' id='customerLabel'>
-							고객
+							음식을 구매하는 고객이예요
 						</label>
 					</div>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'>이름</div>
-					<input
-						name='username'
-						id='name'
-						placeholder='name'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'>이메일</div>
-					<input
-						name='email'
-						id='email'
-						placeholder='@gmail.com'
-						autoComplete='none'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'>비밀번호</div>
-					<input
-						name='password1'
-						id='pw1'
-						placeholder='password'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'> 비밀번호 재확인</div>
-					<input
-						name='password2'
-						id='pw2'
-						placeholder='password'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'>닉네임</div>
-					<input
-						name='nickname'
-						id='nickname'
-						placeholder='nickname'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv'>전화번호</div>
-					<input
-						name='phone_number'
-						id='phone_number'
-						placeholder='010 -'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv'>
-					<div className='thdiv' id='adth'>
-						주소
+					<div className='phtodiv'>
+						<img src={image} className='sellertype' alt='seller type' />{" "}
 					</div>
-					<AddressForm onAddressSelect={setAddress} />
 				</div>
+			</div>
+			<div className='form1'>
+				<form onSubmit={signupAPI}>
+					<div className='formdivdiv'>
+						<div className='thdiv'>이름</div>
+						<input
+							name='username'
+							id='name'
+							placeholder='name'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
 
-				<div className='formdivdiv' id='btns'>
-					<button className='loginbtn' type='submit'>
-						회원가입
-					</button>
-					<button className='backbtn' onClick={handleClickBack}>
-						되돌아가기
-					</button>
-				</div>
-			</form>
+					<div className='formdivdiv'>
+						<div className='thdiv'>이메일</div>
+						<input
+							name='email'
+							id='email'
+							placeholder='@gmail.com'
+							autoComplete='none'
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div className='formdivdiv'>
+						<div className='thdiv'>비밀번호</div>
+						<input
+							name='password1'
+							id='pw1'
+							placeholder='password'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div className='formdivdiv'>
+						<div className='thdiv'> 비밀번호 재확인</div>
+						<input
+							name='password2'
+							id='pw2'
+							placeholder='password'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div className='formdivdiv'>
+						<div className='thdiv'>{formData.seller === "구매자" ? "닉네임" : "가게 이름"}</div>
+						<input
+							name='nickname'
+							id='nickname'
+							placeholder={formData.seller === "구매자" ? "nickname" : "가게 이름"}
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div className='formdivdiv'>
+						<div className='thdiv'>전화번호</div>
+						<input
+							name='phone_number'
+							id='phone_number'
+							placeholder='010 -'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div className='formdivdiv'>
+						<div className='thdiv' id='adth'>
+							{formData.seller === "구매자" ? "주소" : "가게 주소"}
+						</div>
+						<AddressForm onAddressSelect={setAddress} />
+					</div>
+
+					<div className='formdivdiv' id='btns'>
+						<button className='loginbtn' type='submit'>
+							회원가입
+						</button>
+						<button className='backbtn' onClick={handleClickBack}>
+							되돌아가기
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 
 	const form2 = (
-		<div className='form2'>
-			<form onSubmit={login}>
+		<div className='jobform'>
+			<div className='photoandjob'>
 				<div className='job'>
 					<div className='owner'>
-						<span className='owner'>
-							<input id='owner' name='job' type='radio' value='owner' />
-							<label htmlFor='owner' id='ownerLabel'>
-								사장님
-							</label>
-						</span>
+						<input id='owner' name='seller' type='radio' value='판매자' onChange={handleChange} />
+						<label htmlFor='owner' id='ownerLabel'>
+							저는 가게를 운영하는 사장이예요
+						</label>
 					</div>
-
 					<div className='customer'>
-						<span className='customer'>
-							<input id='customer' name='job' type='radio' value='customer' defaultChecked={true} />
-							<label htmlFor='customer' id='customerLabel'>
-								고객
-							</label>
-						</span>
+						<input
+							id='customer'
+							name='seller'
+							type='radio'
+							value='구매자'
+							defaultChecked={true}
+							onChange={handleChange}
+						/>
+						<label htmlFor='customer' id='customerLabel'>
+							음식을 구매하는 고객이예요
+						</label>
+					</div>
+					<div className='phtodiv'>
+						<img src={image} className='sellertype' alt='seller type' />{" "}
 					</div>
 				</div>
+			</div>
+			<div className='form2'>
+				<form onSubmit={login}>
+					<div className='formdivdiv'>
+						<div className='thdiv'>이름</div>
+						<input
+							name='username'
+							id='name'
+							placeholder='name'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
 
-				<div className='formdivdiv'>
-					<div className='thdiv'>아이디</div>
-					<input
-						name='username'
-						placeholder='id'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
+					{/* <div className='formdivdiv'>
+						<div className='thdiv'></div>
+						<input
+							name='email'
+							placeholder='email'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div> */}
 
-				<div className='formdivdiv'>
-					<div className='thdiv'>이메일</div>
-					<input
-						name='email'
-						placeholder='email'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
+					<div className='formdivdiv'>
+						<div className='thdiv'>비밀번호</div>
+						<input
+							name='password'
+							placeholder='password'
+							autoComplete='off'
+							onChange={handleChange}
+							required
+						/>
+					</div>
 
-				<div className='formdivdiv'>
-					<div className='thdiv'>비밀번호</div>
-					<input
-						name='password'
-						placeholder='password'
-						autoComplete='off'
-						onChange={handleChange}
-						required
-					/>
-				</div>
-
-				<div className='formdivdiv' id='btns'>
-					<button className='loginbtn'>로그인</button>
-					<button className='backbtn' onClick={handleClickBack}>
-						되돌아가기
-					</button>
-				</div>
-			</form>
+					<div className='formdivdiv' id='btns'>
+						<button className='loginbtn'>로그인</button>
+						<button className='backbtn' onClick={handleClickBack}>
+							되돌아가기
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 
 	return (
 		<>
+			<Sellernav />
 			<div className='navlogin'>
 				<div className={`show_signup ${showform === "signup" ? "active" : ""}`}>
 					<button className='btn' id='sgp' onClick={() => setShowForm("signup")}>

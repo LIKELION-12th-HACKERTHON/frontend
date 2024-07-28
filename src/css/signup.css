@@ -2,16 +2,15 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
 	margin: 0;
-	background-color: #fece00;
+	background-color: #fece00; /* 밝은 색상 배경 */
 	font-family: "Arial", sans-serif;
 }
 
 .navlogin {
 	display: flex;
-	margin-top: 80px;
-	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-bottom: 50px;
 	justify-content: center;
 }
 
@@ -40,18 +39,19 @@ body {
 
 .btn {
 	width: 100%;
-	height: 40px;
-	line-height: 40px;
+	height: 35px;
+	line-height: 35px;
 	padding: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 16px;
+	font-size: 14px;
 	border: none;
 	background-color: rgba(143, 226, 190, 0.588);
 	color: rgba(255, 255, 255, 0.635);
 	cursor: pointer;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
 }
 
 #sgp {
@@ -68,36 +68,51 @@ body {
 	transform: translateY(-2px);
 }
 
-.form1,
-.form2 {
-	width: 50vw;
+.form1 {
+	width: 33vw;
 	min-width: 500px;
 	max-width: 800px;
 	padding: 20px;
 	background-color: white;
 	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: auto;
+	margin-top: 40px;
+}
+.form2 {
+	width: 33vw;
+	min-width: 500px;
+	max-width: 800px;
+	height: max-content;
+	padding: 20px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 150px;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding-left: 18px;
+	padding-left: 10px;
 	padding-right: 18px;
-	color: #289868;
+	color: #294c3d;
+	margin-top: 20px;
 }
 
 .job {
-	display: flex;
+	display: block;
 	justify-content: space-around;
 	position: relative;
-	margin-bottom: 40px;
-	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-top: 0px;
+	margin-left: 20%;
 }
 
 .owner,
@@ -114,11 +129,15 @@ form {
 input[type="radio"] {
 	height: 11px;
 }
+#customerLabel,
+#ownerLabel {
+	width: 20rem;
+}
 
 input[type="radio"]:checked + #customerLabel,
 input[type="radio"]:checked + #ownerLabel {
 	color: #58a758;
-	font-size: 30px;
+	font-size: 24px;
 	font-weight: bolder;
 	transition: all 0.3s ease;
 }
@@ -132,16 +151,9 @@ input[type="radio"]:checked {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-left: 40px;
-	margin-bottom: 15px;
-}
-
-#address {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-left: 20px;
-	margin-bottom: 15px;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-bottom: 10px;
 }
 
 .addressdiv {
@@ -157,15 +169,21 @@ input[type="radio"]:checked {
 	text-align: left;
 	padding-top: 12px;
 	padding-bottom: 12px;
+	font-size: 16px;
+	font-weight: bolder;
+	white-space: nowrap;
 }
 
 input {
-	flex: 0.8;
-	line-height: 25px;
-	padding: 8px;
+	flex: 0.7;
+	line-height: 28px;
+	padding: 6px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	font-size: 13px;
+}
+.input.name {
+	margin-right: 30px;
 }
 
 #btns {
@@ -197,4 +215,38 @@ input {
 	background-color: #289868;
 	color: white;
 	transform: translateY(-2px);
+}
+.jobform {
+	display: flex;
+	background-color: #ffffff;
+	width: 100vw;
+	position: inherit;
+	/* padding: 30px; */
+	/* margin: 100px; */
+	justify-content: center; /* 가운데 정렬 */
+	gap: 5%;
+	height: 76vh;
+	/* 세로 가운데 정렬 */
+}
+
+.photoandjob {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start; /* 세로 정렬을 위쪽으로 조정 */
+	margin-left: 5rem;
+	margin-right: 8rem;
+	align-items: flex-start;
+	margin-top: 80px;
+}
+
+.sellertype {
+	height: 15rem;
+	width: 15rem;
+	margin-top: 0; /* 상단 마진 조정 */
+	object-fit: contain; /* 이미지가 비율을 유지하며 컨테이너에 맞추어짐 */
+}
+
+.phtodiv {
+	margin-top: 20px;
 }

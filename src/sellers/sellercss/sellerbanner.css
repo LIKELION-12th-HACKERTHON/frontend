@@ -13,6 +13,7 @@
 	height: 8rem;
 	object-fit: cover; /* 이미지를 잘라내지 않고 비율을 유지하며 채우기 */
 	object-position: center;
+	padding-top: 7px;
 }
 
 .sellerBanner-body-style {
