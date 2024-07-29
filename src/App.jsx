@@ -6,6 +6,7 @@ import CustomerHome from "./customers/customerhome";
 import Sellershop from "./sellers/sellershop.jsx";
 import SearchList from "./customers/searchlist.jsx";
 import InitialSearch from "./customers/initialsearch.jsx";
+import SellermainPage from "./sellers/sellermainpage.jsx";
 
 function App() {
 	return (
@@ -17,9 +18,9 @@ function App() {
 					<Route index={true} element={<InitialSearch />} />
 					<Route path='search/:place' element={<SearchList />} />
 				</Route>
-				<Route path='/seller' element={<SellerPage />} />
+				{/* <Route path='/seller' element={<SellerPage />} /> */}
 				<Route path='/customer' element={<CustomerHome />} />
-				{/* <Route path='/seller' element={<SellermainPage />} /> */}
+				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/sellershop' element={<Sellershop />} />
 			</Routes>
