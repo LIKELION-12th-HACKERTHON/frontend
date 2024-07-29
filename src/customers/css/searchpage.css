@@ -1,0 +1,18 @@
+.all-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.one-list {
+  width: 90vw;
+  border: solid #17403C;
+  padding: 15px;
+}
+
+.list-img {
+  img {
+    width: 200px;
+    height: auto;
+  }
+}

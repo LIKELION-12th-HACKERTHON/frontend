@@ -5,8 +5,8 @@ import FormLogin from "./pages/formlogin.jsx";
 import CustomerHome from "./customers/customerhome";
 import SellerPage from "./sellers/sellerpage.jsx";
 import Sellershop from "./sellers/sellershop.jsx";
-import SearchList from "./customers/searchlist.jsx";
 import InitialSearch from "./customers/initialsearch.jsx";
+import Searchpage from "./customers/searchpage.jsx";
 
 function App() {
 	return (
@@ -16,7 +16,7 @@ function App() {
 				<Route path='/login' element={<FormLogin />} />
 				<Route path='/customer' element={<CustomerHome />}>
 					<Route index={true} element={<InitialSearch/>}/>
-					<Route path='search/:place' element={<SearchList/>}/>
+					<Route path='search/:place' element={<Searchpage/>}/>
 				</Route>
 				<Route path='/seller' element={<SellerPage />} />
 				<Route path='/sellershop' element={<Sellershop />} />
