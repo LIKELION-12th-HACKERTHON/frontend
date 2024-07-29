@@ -21,7 +21,7 @@ export default function Navbar() {
 		navigate("/seller");
 	};
 
-	const Logo = <img src={logoSrc} alt='logo' />; // 함수 외부에 정의
+	const Logo = <img src={logoSrc} classname='navlogo' alt='logo' />; // 함수 외부에 정의
 
 	return (
 		<div className='navbar'>

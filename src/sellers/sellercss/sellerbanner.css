@@ -1,0 +1,25 @@
+.sellerBanner-img-container {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	display: flex;
+	background-color: white;
+	padding-top: 0;
+	margin-top: 0;
+}
+.sellerBanner-bannerv {
+	margin-top: 0;
+	width: 30rem;
+	height: 8rem;
+	object-fit: cover; /* 이미지를 잘라내지 않고 비율을 유지하며 채우기 */
+	object-position: center;
+	padding-top: 7px;
+}
+
+.sellerBanner-body-style {
+	display: flex;
+	flex-direction: row;
+	height: 30vw;
+	border-radius: 5px;
+	width: 100vw;
+}
