@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import FormLogin from "./pages/formlogin.jsx";
 import CustomerHome from "./customers/customerhome";
-import SellerPage from "./sellers/sellerpage.jsx";
 import Sellershop from "./sellers/sellershop.jsx";
 import InitialSearch from "./customers/initialsearch.jsx";
 import Searchpage from "./customers/searchpage.jsx";
+import SellermainPage from "./sellers/sellermainpage.jsx";
 
 function App() {
 	return (
@@ -18,7 +18,10 @@ function App() {
 					<Route index={true} element={<InitialSearch/>}/>
 					<Route path='search/:place' element={<Searchpage/>}/>
 				</Route>
-				<Route path='/seller' element={<SellerPage />} />
+				{/* <Route path='/seller' element={<SellerPage />} /> */}
+				<Route path='/customer' element={<CustomerHome />} />
+				<Route path='/seller' element={<SellermainPage />} />
+				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/sellershop' element={<Sellershop />} />
 			</Routes>
 		</Router>
