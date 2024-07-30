@@ -1,15 +1,34 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import noImage from "./img/no-image.jpg";
+import styled from "styled-components";
+
+const ProductInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: #17403C;
+  font-size: 20px;
+  font-weight: 500;
+`
 
 export default function SearchList() {
   const { place } = useParams();
   const [ contents, setContents ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
+  const navigate = useNavigate();
   const defaultImage = noImage
 
+  const handleNumber =(number) => {
+    const formattedNumber = new Intl.NumberFormat('en-US').format(number);
+    return(formattedNumber)
+  };
+
+  const handleClick = (id) => {
+    navigate(`/detail/${id}`, {replace: true});
+  }
+  
   const getContents = () => {
     setLoading(true);
     axios.get(`https://ourvege.store/customer/${place}`)
@@ -42,15 +61,23 @@ export default function SearchList() {
   return(
     <div className="all-list">
       {contents.map((content) => (
-        <div className="one-list" key={content.id}>
-          <div className="list-detail">
-            <h5>가게: {content.nickname}</h5>
-            <p>위치 :{content.city} {content.district} {content.dong} {content.detail_location}</p>
-            <p>상품: {content.product}</p>
-            <p>{content.price}원</p>
-          </div>
+        <div
+        className="one-list"
+        key={content.id}
+        onClick={() => handleClick(content.id)}
+        style={{ cursor: "pointer"}}
+        >
           <div className="list-img">
             <img src={content.image || defaultImage} alt={content.product}/>
+          </div>
+          <div className="list-detail">
+            <h3>{content.nickname}</h3>
+            <p>{content.city} {content.district} {content.dong} {content.detail_location}</p>
+            <ProductInfo>
+              <span>상품: {content.product}</span>
+              <span>{handleNumber(content.price)}원</span>
+            </ProductInfo>
+            
           </div>
         </div>
       ))}
