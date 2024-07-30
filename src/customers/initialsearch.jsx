@@ -10,6 +10,7 @@ const SearchWrapper = styled.div`
   h1 {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
     margin-bottom: 80px;
   }
 `

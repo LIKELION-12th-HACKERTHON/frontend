@@ -6,6 +6,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 30px;
 `
 
 const Input = styled.input`
@@ -16,12 +17,15 @@ const Input = styled.input`
 const Button = styled.button`
   display: inline-flex;
   align-items: center;
-  background-color: #B0D9B6;
+  background-color: #d2d2d2;
   margin-left: 20px;
-  height: 30px;
+  height: 43px;
   border-radius: 5px;
   font-size: 15px;
-  //버튼 호버 기능 추가하기
+  &:hover {
+    transform: scale(1.1);
+    background-color: #B0D9B6;
+  }
 `
 
 export default function Searchbar() {
@@ -32,12 +36,18 @@ export default function Searchbar() {
 
   //검색한 값이 없으면 이동 안되게 만들기!
   const handleSearch = () => {
-    navigate(`search/${encodeURIComponent(keyword)}`, )//특수문자 포함한 URL인코딩?
+    navigate(`search/${encodeURIComponent(keyword)}`, {replace: true})//특수문자 포함한 URL인코딩?
   }
 
   //고객이 글씨를 쓸때마다 반영되게
   const onChange = (e) => {
     setKeyword(e.target.value);
+  }
+
+  const activeEnter = (e) => {
+    if(e.key === "Enter") {
+      handleSearch();
+    }
   }
 
   //console.log(setKeyword)
@@ -48,6 +58,7 @@ export default function Searchbar() {
         placeholder="ex.이문동"
         value={keyword}
         onChange={onChange}
+        onKeyDown={(e) => activeEnter(e)}
       />
       <Button onClick={handleSearch}>검색</Button>
     </InputWrapper>
