@@ -1,12 +1,7 @@
 import { create } from "zustand";
 
 const useMemberStore = create((set) => ({
-	//data
-
-	loginMember: {},
-
-	//function
+	loginMember: null,
 	setLoginMember: (data) => set({ loginMember: data }),
 }));
-
 export default useMemberStore;

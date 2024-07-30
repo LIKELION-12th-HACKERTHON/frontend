@@ -1,30 +1,38 @@
 import React from "react";
 import "../sellers/sellercss/sellernav.css";
-import logowhite from "../sellers/sellerphotos/vegelogoback.png";
 import logogreen from "../sellers/sellerphotos/greenlogo.png";
 import { useNavigate } from "react-router-dom";
+import useMemberStore from "../store/memberStore";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
-function SellerNavgreen() {
+export default function Sellernav() {
 	const navigate = useNavigate();
-	return (
-		<div className='navbargreen'>
-			<img
-				src={logowhite}
-				className='imgb'
-				id='logo'
-				alt='Logo'
-				onClick={() => navigate("/seller")}
-			/>
-			<div className='tabBar'>
-				<button onClick={() => navigate("/login")}>Login</button>
-				<button onClick={() => navigate("/sellershop")}>My page</button>
-			</div>
-		</div>
+	const { loginMember, setLoginMember } = useMemberStore();
+
+	function logout() {
+		setLoginMember(null);
+		navigate("/");
+		console.log("Current login member:", loginMember);
+	}
+
+	const LoginButton = () => (
+		<button className='loginbuttonclass' onClick={() => navigate("/login")}>
+			로그인
+		</button>
 	);
-}
 
-function SellerNavwhite() {
-	const navigate = useNavigate();
+	const LogoutButton = () => (
+		<button className='logoutbuttonclass' onClick={logout}>
+			로그아웃
+		</button>
+	);
+
+	const MyPageButton = () => (
+		<button className='mypagebuttonclass' onClick={navigate("/sellershop")}>
+			<IoPersonCircleSharp size='2rem' />
+		</button>
+	);
+
 	return (
 		<div className='navbarwhite'>
 			<img
@@ -35,18 +43,10 @@ function SellerNavwhite() {
 				onClick={() => navigate("/seller")}
 			/>
 			<div className='tabBar'>
-				<button onClick={() => navigate("/login")}>Login</button>
-				<button onClick={() => navigate("/sellershop")}>My page</button>
+				{loginMember ? <LogoutButton /> : <LoginButton />}
+				{loginMember && <MyPageButton />}
+				{/* <button onClick={() => navigate("/sellershop")}>My page</button> */}
 			</div>
 		</div>
 	);
 }
-
-function Sellernav() {
-	// const useGreenNav = true // Example condition
-	const useGreenNav = false; // Example condition
-
-	return <>{useGreenNav ? <SellerNavgreen /> : <SellerNavwhite />}</>;
-}
-
-export default Sellernav;

@@ -7,7 +7,7 @@ import useMemberStore from "../store/memberStore";
 import shopimg from "../sellers/sellerphotos/shoprestraunt.png";
 import clientimg from "../sellers/sellerphotos/client.png";
 import Sellernav from "../sellers/sellernav";
-import Form1s from "../sellers/components/Form1s";
+import Cookies from "js-cookie";
 
 export default function FormLogin() {
 	const memberStore = useMemberStore();
@@ -63,22 +63,42 @@ export default function FormLogin() {
 				console.log(error.response.data);
 			});
 	};
-
 	const login = async (event) => {
 		event.preventDefault();
-		const API = "https://ourvege.store/member/login/";
+		const APIlogin = "https://ourvege.store/member/login/";
+
+		const loginData = {
+			seller: formData.seller,
+			username: formData.username,
+			password: formData.password,
+		};
+
+		console.log("Login request data:", loginData); // username 대신 loginData로 수정
+
 		try {
-			const response = await axios.post(API, {
-				seller: formData.seller,
-				username: formData.username,
-				password: formData.password,
+			const response = await axios.post(APIlogin, loginData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
 			});
-			console.log("로그인성공", response.data.user.username, response.data.user.nickname);
-			navigate(`/sellershop`);
-			//상태관리에 저장
+
+			console.log("로그인 응답:", response.data);
+			window.alert("로그인완료!");
 			memberStore.setLoginMember(response.data.user);
+
+			if (formData.seller === "구매자") {
+				navigate("/customer");
+			} else {
+				navigate("/seller");
+			}
 		} catch (error) {
-			console.error("로그인실패", error.response?.data || error.message);
+			console.error("로그인 실패", error.response?.data || error.message);
+			if (error.response) {
+				console.error("서버 응답:", error.response.data);
+				console.error("상태 코드:", error.response.status);
+				console.error("헤더:", error.response.headers);
+			}
+			window.alert("로그인에 실패했습니다. 다시 시도해주세요.");
 		}
 	};
 
