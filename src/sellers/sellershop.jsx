@@ -25,7 +25,6 @@ export default function Sellershop() {
 			<h1>사장님의 가게 현황</h1>
 			<Maincontents>
 				<Menunav />
-				<Dsellershop />
 				<IdCard>
 					<Sellerid />
 				</IdCard>

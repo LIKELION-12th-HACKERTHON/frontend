@@ -1,50 +1,55 @@
-/* Navcolor component CSS */
 .navbarwhite {
-	width: 100vw;
+	width: 99%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: transparent; /* Ensure background is transparent */
-	color: #145039; /* Adjust text color for visibility over the banner */
-	margin-bottom: 1rem;
+	background-color: transparent;
+	color: #145039;
+	padding: 0.5rem 1rem;
 	font-weight: bold;
 	font-size: 1.4rem;
-}
-
-.navbargreen {
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: transparent; /* Ensure background is transparent */
-	color: white; /* Adjust text color for visibility over the banner */
-	margin-bottom: 1rem;
-	font-size: 1.4rem;
+	box-sizing: border-box;
 }
 
 .imgb {
-	padding: 14px;
 	height: 5.5rem;
 	width: auto;
-	margin-left: 15px;
 }
+
 #logo {
 	cursor: pointer;
+	box-sizing: border-box;
 }
 
 .tabBar {
-	padding-right: 26px;
-	justify-content: space-between;
+	display: flex;
+	align-items: center;
 }
 
-button {
+.tabBar button {
 	font-size: 1.1rem;
 	font-weight: bold;
-	padding: 16px;
+	padding: 0.5rem 0.5rem;
 	background-color: transparent;
 	border: none;
 	color: #145039;
-}
-button:hover {
 	cursor: pointer;
+	margin-left: 1rem;
+	transition: opacity 0.3s ease;
+}
+
+.tabBar button:hover {
+	opacity: 0.8;
+}
+
+.mypagebuttonclass,
+.loginbuttonclass,
+.logoutbuttonclass {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mypagebuttonclass {
+	margin-right: 2rem;
 }
