@@ -7,6 +7,8 @@ import Sellershop from "./sellers/sellershop.jsx";
 import InitialSearch from "./customers/initialsearch.jsx";
 import Searchpage from "./customers/searchpage.jsx";
 import SellermainPage from "./sellers/sellermainpage.jsx";
+import Mypage from "./components/mypage.jsx";
+import Detailpage from "./customers/detailpage.jsx";
 
 function App() {
 	return (
@@ -23,6 +25,8 @@ function App() {
 				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/sellershop' element={<Sellershop />} />
+				<Route path='/mypage' element={<Mypage/>}/>
+				<Route path='/detail/:id' element={<Detailpage/>}/>
 			</Routes>
 		</Router>
 	);

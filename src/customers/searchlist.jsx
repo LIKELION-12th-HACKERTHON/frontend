@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import noImage from "./img/no-image.jpg";
 import styled from "styled-components";
+import api from "../components/api";
 
 const ProductInfo = styled.div`
   display: flex;
@@ -26,12 +26,12 @@ export default function SearchList() {
   };
 
   const handleClick = (id) => {
-    navigate(`/detail/${id}`, {replace: true});
+    navigate(`/detail/${id}`);
   }
   
   const getContents = () => {
     setLoading(true);
-    axios.get(`https://ourvege.store/customer/${place}`)
+    api.get(`/customer/${place}`)
       .then((res) => {
         console.log('글 불러오기 완료');
         setLoading(false);
