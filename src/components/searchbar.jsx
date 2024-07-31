@@ -13,6 +13,11 @@ const Input = styled.input`
   width: 90vw;
   max-width: 500px;
   height: 30px;
+  &:focus {
+    border-color: #B0D9B6;
+    border-width: 1.5px;
+    outline: none;
+  }
 `
 const Button = styled.button`
   display: inline-flex;
