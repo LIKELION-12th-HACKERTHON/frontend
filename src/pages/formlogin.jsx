@@ -10,6 +10,7 @@ import Sellernav from "../sellers/sellernav";
 import Cookies from "js-cookie";
 
 export default function FormLogin() {
+	const [isExpanded, seetIsExpanded] = useState(false);
 	const memberStore = useMemberStore();
 	const navigate = useNavigate();
 	const [address, setAddress] = useState({
@@ -89,7 +90,7 @@ export default function FormLogin() {
 			if (formData.seller === "구매자") {
 				navigate("/customer");
 			} else {
-				navigate("/seller");
+				navigate("/sellershop");
 			}
 		} catch (error) {
 			console.error("로그인 실패", error.response?.data || error.message);
@@ -105,9 +106,11 @@ export default function FormLogin() {
 	const [showform, setShowForm] = useState("login");
 	const handleShowSignup = () => {
 		setShowForm("signup");
+		setIsExpanded(true);
 	};
 	const handleShowLogin = () => {
 		setShowForm("login");
+		setIsExpanded(false);
 	};
 
 	const handleChange = (e) => {
@@ -144,7 +147,7 @@ export default function FormLogin() {
 					<div className='owner'>
 						<input id='owner' name='seller' type='radio' value='판매자' onChange={handleChange} />
 						<label htmlFor='owner' id='ownerLabel'>
-							저는 가게를 운영하는 사장이예요
+							사장님
 						</label>
 					</div>
 					<div className='customer'>
@@ -157,102 +160,105 @@ export default function FormLogin() {
 							onChange={handleChange}
 						/>
 						<label htmlFor='customer' id='customerLabel'>
-							음식을 구매하는 고객이예요
+							고객님
 						</label>
-					</div>
-					<div className='phtodiv'>
-						<img src={image} className='sellertype' alt='seller type' />{" "}
 					</div>
 				</div>
 			</div>
 			<div className='form1'>
 				<form onSubmit={signupAPI}>
-					<div className='formdivdiv'>
-						<div className='thdiv'>이름</div>
-						<input
-							name='username'
-							id='name'
-							placeholder='name'
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div>
+					<div className='formcontent'>
+						<div className='firstpart'>
+							<div className='formdivdiv'>
+								<div className='thdiv'>이름</div>
+								<input
+									name='username'
+									id='name'
+									placeholder='name'
+									autoComplete='off'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 
-					<div className='formdivdiv'>
-						<div className='thdiv'>이메일</div>
-						<input
-							name='email'
-							id='email'
-							placeholder='@gmail.com'
-							autoComplete='none'
-							onChange={handleChange}
-							required
-						/>
-					</div>
+							<div className='formdivdiv'>
+								<div className='thdiv'>이메일</div>
+								<input
+									name='email'
+									id='email'
+									placeholder='@gmail.com'
+									autoComplete='none'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 
-					<div className='formdivdiv'>
-						<div className='thdiv'>비밀번호</div>
-						<input
-							name='password1'
-							id='pw1'
-							placeholder='password'
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div>
+							<div className='formdivdiv'>
+								<div className='thdiv'>비밀번호</div>
+								<input
+									name='password1'
+									id='pw1'
+									placeholder='password'
+									autoComplete='off'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 
-					<div className='formdivdiv'>
-						<div className='thdiv'> 비밀번호 재확인</div>
-						<input
-							name='password2'
-							id='pw2'
-							placeholder='password'
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div>
+							<div className='formdivdiv'>
+								<div className='thdiv'> 비밀번호 재확인</div>
+								<input
+									name='password2'
+									id='pw2'
+									placeholder='password'
+									autoComplete='off'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 
-					<div className='formdivdiv'>
-						<div className='thdiv'>{formData.seller === "구매자" ? "닉네임" : "가게 이름"}</div>
-						<input
-							name='nickname'
-							id='nickname'
-							placeholder={formData.seller === "구매자" ? "nickname" : "가게 이름"}
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div>
+							<div className='formdivdiv'>
+								<div className='thdiv'>{formData.seller === "구매자" ? "닉네임" : "가게 이름"}</div>
+								<input
+									name='nickname'
+									id='nickname'
+									placeholder={formData.seller === "구매자" ? "nickname" : "가게 이름"}
+									autoComplete='off'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 
-					<div className='formdivdiv'>
-						<div className='thdiv'>전화번호</div>
-						<input
-							name='phone_number'
-							id='phone_number'
-							placeholder='010 -'
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div>
-
-					<div className='formdivdiv'>
-						<div className='thdiv' id='adth'>
-							{formData.seller === "구매자" ? "주소" : "가게 주소"}
+							<div className='formdivdiv'>
+								<div className='thdiv'>전화번호</div>
+								<input
+									name='phone_number'
+									id='phone_number'
+									placeholder='010 -'
+									autoComplete='off'
+									onChange={handleChange}
+									required
+								/>
+							</div>
 						</div>
-						<AddressForm onAddressSelect={setAddress} />
-					</div>
 
-					<div className='formdivdiv' id='btns'>
-						<button className='loginbtn' type='submit'>
-							회원가입
-						</button>
-						<button className='backbtn' onClick={handleClickBack}>
-							되돌아가기
-						</button>
+						<div className='adresspart'>
+							<div className='formdivdiv'>
+								<div className='thdiv' id='adth'>
+									{formData.seller === "구매자" ? "주소" : "가게 주소"}
+								</div>
+								<AddressForm onAddressSelect={setAddress} />
+							</div>
+						</div>
+
+						<div className='formdivdiv' id='btns'>
+							<button className='loginbtn' type='submit'>
+								회원가입
+							</button>
+							<button className='backbtn' onClick={handleClickBack}>
+								되돌아가기
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -266,7 +272,7 @@ export default function FormLogin() {
 					<div className='owner'>
 						<input id='owner' name='seller' type='radio' value='판매자' onChange={handleChange} />
 						<label htmlFor='owner' id='ownerLabel'>
-							저는 가게를 운영하는 사장이예요
+							사장님
 						</label>
 					</div>
 					<div className='customer'>
@@ -279,11 +285,8 @@ export default function FormLogin() {
 							onChange={handleChange}
 						/>
 						<label htmlFor='customer' id='customerLabel'>
-							음식을 구매하는 고객이예요
+							고객님
 						</label>
-					</div>
-					<div className='phtodiv'>
-						<img src={image} className='sellertype' alt='seller type' />{" "}
 					</div>
 				</div>
 			</div>
@@ -335,8 +338,7 @@ export default function FormLogin() {
 	);
 
 	return (
-		<>
-			<Sellernav />
+		<div className={`login-container ${showform === "signup" ? "signup-mode" : "login-mode"}`}>
 			<div className='navlogin'>
 				<div className={`show_signup ${showform === "signup" ? "active" : ""}`}>
 					<button className='btn' id='sgp' onClick={() => setShowForm("signup")}>
@@ -350,6 +352,6 @@ export default function FormLogin() {
 				</div>
 			</div>
 			{showform === "signup" ? form1 : form2}
-		</>
+		</div>
 	);
 }

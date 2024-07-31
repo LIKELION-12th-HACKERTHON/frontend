@@ -1,1 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Noto Sans KR", sans-serif;
+	background-color: #f4f7fc;
+	color: #333;
+}
+
+.container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+	height: 40px;
+}
+
+.nav-links a {
+	color: #333;
+	text-decoration: none;
+	margin-left: 20px;
+	font-weight: 500;
+}
+
+.nav-links a.active {
+	color: #04b04c;
+}
+
+main {
+	display: flex;
+	flex: 1;
+	padding: 40px;
+	gap: 40px;
+}
+
+.login-container {
+	transition: max-width 0.3s ease-in-out;
+}
+
+.login-container.login-mode {
+	max-width: 450px;
+}
+
+.login-container.signup-mode {
+	max-width: 800px;
+}
+
+.login-container.signup-mode .formcontent {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+
+.login-container.signup-mode .firstpart,
+.login-container.signup-mode .adresspart {
+	flex: 1;
+}
+
+@media (max-width: 768px) {
+	.login-container.login-mode,
+	.login-container.signup-mode {
+		max-width: 100%;
+	}
+
+	.login-container.signup-mode .formcontent {
+		flex-direction: column;
+	}
+}
+.login-container,
+.ad-container {
+	background-color: white;
+	border-radius: 10px;
+	padding: 40px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+	margin-bottom: 30px;
+	color: #04b04c;
+}
+
+.ad-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.ad-container h3 {
+	color: #04b04c;
+	margin-bottom: 10px;
+}
+
+.ad-container p {
+	margin-bottom: 20px;
+}
+
+.ad-container img {
+	width: 100%;
+	max-width: 300px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
+.btn-ad {
+	padding: 10px 20px;
+	background-color: #04b04c;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.btn-ad:hover {
+	background-color: #039042;
+}
+
+@media (max-width: 768px) {
+	main {
+		flex-direction: column;
+	}
+
+	.login-container,
+	.ad-container {
+		max-width: 100%;
+	}
+}
