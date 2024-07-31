@@ -1,33 +1,98 @@
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-	background-color: #fece00; /* 밝은 색상 배경 */
-	font-family: "Arial", sans-serif;
-}
-
 .navlogin {
 	display: flex;
-	margin-top: 20px;
-	margin-bottom: 50px;
 	justify-content: center;
+	margin-bottom: 20px;
 }
 
 .show_login,
 .show_signup {
-	width: 180px;
-	display: flex;
-	justify-content: center;
-	opacity: 0.6;
-	transition: opacity 0.3s ease;
+	width: 50%;
 }
 
-.show_login:hover,
-.show_signup:hover,
-.show_login.active,
-.show_signup.active {
-	opacity: 1;
+.btn {
+	width: 100%;
+	height: 40px;
+	font-size: 14px;
+	border: none;
+	background-color: #f0f0f0;
+	color: #333;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.btn:hover,
+.btn.active {
+	background-color: #04b04c;
+	color: white;
+}
+
+#sgp {
+	border-radius: 5px 0 0 5px;
+}
+
+#lgn {
+	border-radius: 0 5px 5px 0;
+}
+
+.form1 {
+	width: 100%;
+	padding: 0;
+	background-color: transparent;
+	box-shadow: none;
+}
+.form1,
+.form2 {
+	width: 100%;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.formcontent {
+	display: flex;
+	flex-direction: row;
+	gap: 20px; /* 두 열 사이의 간격 */
+}
+
+.firstpart,
+.adresspart {
+	flex: 1; /* 두 열이 동일한 너비를 가지도록 설정 */
+	display: flex;
+	flex-direction: column;
+}
+
+.formdivdiv {
+	margin-bottom: 15px; /* 각 입력 필드 사이의 간격 */
+}
+
+#btns {
+	margin-top: 20px; /* 버튼과 폼 내용 사이의 간격 */
+}
+
+.thdiv {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+input {
+	width: 100%;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.backbtn,
+.loginbtn {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	background-color: #04b04c;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
 .show_login.active .btn,
@@ -37,216 +102,51 @@ body {
 	font-weight: bolder;
 }
 
-.btn {
-	width: 100%;
-	height: 35px;
-	line-height: 35px;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 14px;
-	border: none;
-	background-color: rgba(143, 226, 190, 0.588);
-	color: rgba(255, 255, 255, 0.635);
-	cursor: pointer;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	border-radius: 5px;
-}
-
-#sgp {
-	border-radius: 10px 0 0 10px;
-}
-
-#lgn {
-	border-radius: 0 10px 10px 0;
-}
-
-.btn:hover {
-	background-color: #289868;
-	color: white;
-	transform: translateY(-2px);
-}
-
-.form1 {
-	width: 33vw;
-	min-width: 500px;
-	max-width: 800px;
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 40px;
-}
-.form2 {
-	width: 33vw;
-	min-width: 500px;
-	max-width: 800px;
-	height: max-content;
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 150px;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	padding-left: 10px;
-	padding-right: 18px;
-	color: #294c3d;
-	margin-top: 20px;
+.show_login:hover,
+.show_signup:hover,
+.show_login.active,
+.show_signup.active {
+	opacity: 1;
 }
 
 .job {
-	display: block;
-	justify-content: space-around;
-	position: relative;
+	display: flex;
+	flex-direction: column;
 	margin-bottom: 20px;
-	margin-top: 0px;
-	margin-left: 20%;
+	background-color: #f0f0f0;
+	padding: 15px;
+	border-radius: 5px;
 }
 
 .owner,
 .customer {
 	display: flex;
 	align-items: center;
-	padding: 12px 21px;
-	gap: 10px;
-	cursor: pointer;
-	color: #5e5e5ea5;
-	font-size: 15px;
+	width: 48%; /* 각 옵션이 거의 절반의 너비를 차지하도록 설정 */
 }
 
 input[type="radio"] {
-	height: 11px;
+	margin-right: 10px;
+	min-width: 20px; /* 라디오 버튼의 최소 너비 설정 */
 }
+
 #customerLabel,
 #ownerLabel {
-	width: 20rem;
+	font-size: 15px;
+	line-height: 1.3;
+	word-break: keep-all;
+	white-space: normal;
 }
 
 input[type="radio"]:checked + #customerLabel,
 input[type="radio"]:checked + #ownerLabel {
-	color: #58a758;
-	font-size: 24px;
-	font-weight: bolder;
-	transition: all 0.3s ease;
-}
-
-input[type="radio"]:checked {
-	accent-color: green;
-	transition: all 0.3s ease;
-}
-
-.formdivdiv {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-left: 2rem;
-	padding-right: 2rem;
-	margin-bottom: 10px;
-}
-
-.addressdiv {
-	width: 100vw;
-	min-width: 350px;
-	display: flex;
-	justify-content: left;
-}
-
-.thdiv {
-	min-width: 60px;
-	width: 9%;
-	text-align: left;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	font-size: 16px;
-	font-weight: bolder;
-	white-space: nowrap;
-}
-
-input {
-	flex: 0.7;
-	line-height: 28px;
-	padding: 6px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	font-size: 13px;
-}
-.input.name {
-	margin-right: 30px;
-}
-
-#btns {
-	display: flex;
-	flex-direction: column;
-	margin-top: 10px;
-	padding-left: 0;
-}
-
-.backbtn,
-.loginbtn {
-	margin-top: 14px;
-	border-radius: 10px;
-	border: none;
-	padding: 0;
-	height: 40px;
-	width: 280px;
-	cursor: pointer;
-	background-color: #04b04c74;
-	color: rgba(255, 255, 255, 0.835);
-	transition: background-color 0.3s ease, transform 0.3s ease;
-	line-height: 40px;
-	font-size: 1rem;
-	text-align: center;
-}
-
-.backbtn:hover,
-.loginbtn:hover {
-	background-color: #289868;
-	color: white;
-	transform: translateY(-2px);
-}
-.jobform {
-	display: flex;
-	background-color: #ffffff;
-	width: 100vw;
-	position: inherit;
-	/* padding: 30px; */
-	/* margin: 100px; */
-	justify-content: center; /* 가운데 정렬 */
-	gap: 5%;
-	height: 76vh;
-	/* 세로 가운데 정렬 */
-}
-
-.photoandjob {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start; /* 세로 정렬을 위쪽으로 조정 */
-	margin-left: 5rem;
-	margin-right: 8rem;
-	align-items: flex-start;
-	margin-top: 80px;
+	color: #04b04c;
+	font-weight: bold;
 }
 
 .sellertype {
-	height: 15rem;
-	width: 15rem;
-	margin-top: 0; /* 상단 마진 조정 */
-	object-fit: contain; /* 이미지가 비율을 유지하며 컨테이너에 맞추어짐 */
-}
-
-.phtodiv {
-	margin-top: 20px;
+	max-width: 100%;
+	height: auto;
+	max-height: 200px;
+	object-fit: contain;
 }
