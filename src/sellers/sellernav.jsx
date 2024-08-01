@@ -1,6 +1,6 @@
 import React from "react";
 import "../sellers/sellercss/sellernav.css";
-import logogreen from "../sellers/sellerphotos/greenlogo.png";
+import vegelogo from "./sellerphotos/vege_logo.png";
 import { useNavigate } from "react-router-dom";
 import useMemberStore from "../store/memberStore";
 import { IoPersonCircleSharp } from "react-icons/io5";
@@ -40,7 +40,7 @@ export default function Sellernav() {
 	return (
 		<div className='navbarwhite'>
 			<img
-				src={logogreen}
+				src={vegelogo}
 				className='imgb'
 				alt='Logo'
 				id='logo'
