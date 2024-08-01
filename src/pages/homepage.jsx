@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/homepage.css";
 import FormLogin from "./formlogin";
+import vegelogo from "/src/sellers/sellerphotos/vege_logo.png";
 
 export default function MainPage() {
 	return (
@@ -9,7 +10,7 @@ export default function MainPage() {
 				<div className='container'>
 					<nav className='navbar'>
 						<div className='logo'>
-							<img src='logo.png' alt='Our Vege Logo' />
+							<img src={vegelogo} alt='Our Vege Logo' />
 						</div>
 						<div className='nav-links'>
 							<a href='#' className='active'>
