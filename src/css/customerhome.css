@@ -1,3 +1,9 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -9,6 +15,30 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+	height: 40px;
+}
+
+.nav-links span {
+	color: #333;
+	text-decoration: none;
+	margin-left: 20px;
+	font-weight: 500;
+}
+
+.nav-links span.active {
+	color: #04b04c;
 }
 
 .header {

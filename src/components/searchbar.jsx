@@ -12,7 +12,8 @@ const InputWrapper = styled.div`
 const Input = styled.input`
   width: 90vw;
   max-width: 500px;
-  height: 30px;
+  height: 40px;
+  border: solid 1.2px;
   &:focus {
     border-color: #B0D9B6;
     border-width: 1.5px;
@@ -20,12 +21,15 @@ const Input = styled.input`
   }
 `
 const Button = styled.button`
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #d2d2d2;
   margin-left: 20px;
-  height: 43px;
+  height: 40px;
+  width: 60px;
   border-radius: 5px;
+  border: solid 1.2px;
   font-size: 15px;
   
   &:hover {
@@ -42,7 +46,7 @@ export default function Searchbar() {
 
   //검색한 값이 없으면 이동 안되게 만들기!
   const handleSearch = () => {
-    navigate(`search/${encodeURIComponent(keyword)}`, {replace: true})//특수문자 포함한 URL인코딩?
+    navigate(`search/${keyword}`)//특수문자 포함한 URL인코딩?
   }
 
   //고객이 글씨를 쓸때마다 반영되게
