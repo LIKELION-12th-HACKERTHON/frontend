@@ -27,6 +27,7 @@ const Button = styled.button`
   height: 43px;
   border-radius: 5px;
   font-size: 15px;
+  
   &:hover {
     transform: scale(1.1);
     background-color: #B0D9B6;
