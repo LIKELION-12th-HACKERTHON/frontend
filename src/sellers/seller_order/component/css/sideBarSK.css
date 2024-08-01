@@ -1,0 +1,21 @@
+* {
+	font-family: Arial, sans-serif;
+}
+
+.maincontent {
+	display: flex;
+	width: 100vw;
+}
+.marketsidebar {
+	display: flex;
+	flex-direction: column;
+	width: 8vw;
+	padding-top: 1%;
+	/* justify-content: left; */
+	height: 100vh;
+	.marketsidebarbtn {
+		font-weight: bolder;
+		font-size: 1rem;
+		height: 4rem;
+	}
+}

@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-body {
+.body {
 	font-family: "Noto Sans KR", sans-serif;
 	background-color: #f4f7fc;
 	color: #333;
@@ -72,16 +72,6 @@ main {
 	flex: 1;
 }
 
-@media (max-width: 768px) {
-	.login-container.login-mode,
-	.login-container.signup-mode {
-		max-width: 100%;
-	}
-
-	.login-container.signup-mode .formcontent {
-		flex-direction: column;
-	}
-}
 .login-container,
 .ad-container {
 	background-color: white;
@@ -130,15 +120,4 @@ main {
 
 .btn-ad:hover {
 	background-color: #039042;
-}
-
-@media (max-width: 768px) {
-	main {
-		flex-direction: column;
-	}
-
-	.login-container,
-	.ad-container {
-		max-width: 100%;
-	}
 }

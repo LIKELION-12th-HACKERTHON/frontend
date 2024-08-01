@@ -1,0 +1,13 @@
+.orderbar {
+	display: flex;
+	flex: 1;
+	background-color: rgb(176, 176, 210);
+	justify-content: space-around;
+	margin: 20px;
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+}
+.row {
+	background-color: rgb(223, 92, 92);
+	margin: 10px;
+}

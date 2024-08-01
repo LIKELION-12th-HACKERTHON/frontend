@@ -26,7 +26,7 @@
 	align-items: center;
 }
 
-.tabBar button {
+.tabBar {
 	font-size: 1.1rem;
 	font-weight: bold;
 	padding: 0.5rem 0.5rem;

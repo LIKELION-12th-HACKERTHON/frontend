@@ -4,13 +4,10 @@ import axios from "axios";
 import "../css/signup.css";
 import AddressForm from "../components/addressform";
 import useMemberStore from "../store/memberStore";
-import shopimg from "../sellers/sellerphotos/shoprestraunt.png";
-import clientimg from "../sellers/sellerphotos/client.png";
-import Sellernav from "../sellers/sellernav";
 import Cookies from "js-cookie";
 
 export default function FormLogin() {
-	const [isExpanded, seetIsExpanded] = useState(false);
+	const [isExpanded, setIsExpanded] = useState(false);
 	const memberStore = useMemberStore();
 	const navigate = useNavigate();
 	const [address, setAddress] = useState({
@@ -27,7 +24,6 @@ export default function FormLogin() {
 		phone_number: "",
 		seller: "구매자",
 	});
-	const [image, setImage] = useState(clientimg); // 초기 이미지를 고객 이미지로 설정
 
 	const signupAPI = (event) => {
 		event.preventDefault();
@@ -86,6 +82,7 @@ export default function FormLogin() {
 			console.log("로그인 응답:", response.data);
 			window.alert("로그인완료!");
 			memberStore.setLoginMember(response.data.user);
+			localStorage.setItem("accessToken", response.data.access);
 
 			if (formData.seller === "구매자") {
 				navigate("/customer");
@@ -120,19 +117,6 @@ export default function FormLogin() {
 			...formData,
 			[name]: value,
 		});
-
-		// 'seller' 값이 변경될 때 이미지를 변경
-		if (name === "seller") {
-			showImg(value);
-		}
-	};
-
-	const showImg = (seller) => {
-		if (seller === "구매자") {
-			setImage(clientimg);
-		} else if (seller === "사장님" || seller === "판매자") {
-			setImage(shopimg);
-		}
 	};
 
 	const handleClickBack = (event) => {
@@ -303,17 +287,6 @@ export default function FormLogin() {
 							required
 						/>
 					</div>
-
-					{/* <div className='formdivdiv'>
-						<div className='thdiv'></div>
-						<input
-							name='email'
-							placeholder='email'
-							autoComplete='off'
-							onChange={handleChange}
-							required
-						/>
-					</div> */}
 
 					<div className='formdivdiv'>
 						<div className='thdiv'>비밀번호</div>
