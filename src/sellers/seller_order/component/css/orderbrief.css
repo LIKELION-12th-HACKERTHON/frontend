@@ -1,0 +1,17 @@
+.orderpart {
+	display: flex;
+	flex: 1;
+	background-color: rgb(176, 176, 210);
+	justify-content: space-around;
+	margin: 20px;
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+}
+.card {
+	border: 3px solid;
+	border-radius: 10px;
+	width: 28%;
+	height: 8rem;
+	padding: 20px;
+	margin: 20px;
+}

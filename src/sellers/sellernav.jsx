@@ -10,11 +10,15 @@ export default function Sellernav() {
 	const { loginMember, setLoginMember } = useMemberStore();
 
 	function logout() {
-		setLoginMember(null);
+		localStorage.clear();
+		setLoginMember(null); // Zustand 스토어의 loginMember 상태를 null로 설정
 		navigate("/");
-		console.log("Current login member:", loginMember);
-	}
 
+		setTimeout(() => {
+			const currentLoginMember = useMemberStore.getState().loginMember;
+			console.log("Current login member:", currentLoginMember);
+		}, 2000);
+	}
 	const LoginButton = () => (
 		<button className='loginbuttonclass' onClick={() => navigate("/login")}>
 			로그인
@@ -28,7 +32,7 @@ export default function Sellernav() {
 	);
 
 	const MyPageButton = () => (
-		<button className='mypagebuttonclass' onClick={navigate("/sellershop")}>
+		<button className='mypagebuttonclass' onClick={() => navigate("/sellershop")}>
 			<IoPersonCircleSharp size='2rem' />
 		</button>
 	);
@@ -45,7 +49,6 @@ export default function Sellernav() {
 			<div className='tabBar'>
 				{loginMember ? <LogoutButton /> : <LoginButton />}
 				{loginMember && <MyPageButton />}
-				{/* <button onClick={() => navigate("/sellershop")}>My page</button> */}
 			</div>
 		</div>
 	);

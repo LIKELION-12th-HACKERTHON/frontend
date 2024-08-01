@@ -28,7 +28,7 @@ function Sellerid() {
 					<div className='sellerinfo'>{memberStore.loginMember.nickname}</div>
 				</div>
 				<div>
-					<button onClick={() => navigate("/sellershop")}>나의 가게로 바로가기</button>
+					<button onClick={() => navigate("/shopkeeper")}>나의 가게로 바로가기</button>
 				</div>
 				<div>
 					<button>설정</button>
