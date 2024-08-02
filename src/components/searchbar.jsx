@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const InputWrapper = styled.div`
@@ -7,6 +7,10 @@ const InputWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 30px;
+`
+
+const SearchForm = styled.form`
+  display: flex;
 `
 
 const Input = styled.input`
@@ -41,18 +45,37 @@ const Button = styled.button`
 export default function Searchbar() {
   //useState로 값 관리
   //const [isFocus, setIsFocus] = useState(false);
-  const [keyword, setKeyword] = useState("");
+  //const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
+  const [ first, setFirst ] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  //검색한 값이 없으면 이동 안되게 만들기!
+
+  //왜 검색된 상태에서 searchQuery 값이 null로 나올까?
   const handleSearch = () => {
-    navigate(`search/${keyword}`)//특수문자 포함한 URL인코딩?
+    const urlParams = new URLSearchParams(location.search)
+    const check = urlParams.get('q')
+
+    if (check) {
+      setFirst(false)
+    } else {
+      setFirst(true)
+    }
+
+    urlParams.set('q', query)
+    if (first) {
+      navigate(`search?${urlParams}`)
+    } else {
+      navigate(`?${urlParams}`)
+    }
+    //e.preventDefault();
   }
 
   //고객이 글씨를 쓸때마다 반영되게
   const onChange = (e) => {
-    setKeyword(e.target.value);
-  }
+    setQuery(e.target.value);
+  };
 
   const activeEnter = (e) => {
     if(e.key === "Enter") {
@@ -64,13 +87,16 @@ export default function Searchbar() {
   //const filterContent = 
   return(
     <InputWrapper>
-      <Input
+      <SearchForm onSubmit={handleSearch}>
+        <Input
         placeholder="ex.이문동"
-        value={keyword}
+        value={query}
         onChange={onChange}
         onKeyDown={(e) => activeEnter(e)}
-      />
-      <Button onClick={handleSearch}>검색</Button>
+        />
+        <Button>검색</Button>
+      </SearchForm>
+      
     </InputWrapper>
   )
 };

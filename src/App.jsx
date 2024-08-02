@@ -18,7 +18,7 @@ function App() {
 				<Route path='/login' element={<FormLogin />} />
 				<Route path='/customer' element={<CustomerHome />}>
 					<Route index={true} element={<InitialSearch/>}/>
-					<Route path='search/:place' element={<Searchpage/>}/>
+					<Route path='search' element={<Searchpage/>}/>
 				</Route>
 				{/* <Route path='/seller' element={<SellerPage />} /> */}
 				<Route path='/customer' element={<CustomerHome />} />
