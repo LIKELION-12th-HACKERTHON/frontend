@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import noImage from "./img/no-image.jpg";
 import styled from "styled-components";
 import api from "../components/api";
@@ -12,13 +12,16 @@ const ProductInfo = styled.div`
   font-weight: 500;
 `
 
+
 export default function SearchList() {
-  const { place } = useParams();
+  //const { place } = useParams();
   const [ contents, setContents ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
   const navigate = useNavigate();
   const defaultImage = noImage
+  const urlParams = new URLSearchParams(useLocation().search)
+
 
   const handleNumber =(number) => {
     const formattedNumber = new Intl.NumberFormat('en-US').format(number);
@@ -30,8 +33,9 @@ export default function SearchList() {
   }
   
   const getContents = () => {
+    const query = urlParams.get('q')
     setLoading(true);
-    api.get(`/customer/${place}`)
+    api.get(`/customer/${query}`)
       .then((res) => {
         console.log('글 불러오기 완료');
         setLoading(false);
