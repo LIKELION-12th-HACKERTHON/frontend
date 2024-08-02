@@ -19,7 +19,7 @@ function App() {
 				<Route path='/login' element={<FormLogin />} />
 				<Route path='/customer' element={<CustomerHome />}>
 					<Route index={true} element={<InitialSearch/>}/>
-					<Route path='search' element={<Searchpage/>}/>
+					<Route path='search/:place' element={<Searchpage/>}/>
 				</Route>
 				<Route path='/customer' element={<CustomerHome />} />
 				<Route path='/seller' element={<SellermainPage />} />

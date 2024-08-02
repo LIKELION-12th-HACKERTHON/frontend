@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const InfoContainer = styled.div`
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 60vw;
+  width: 100vw;
 `
 
 export const Profile = styled.div`
@@ -13,15 +14,33 @@ export const Profile = styled.div`
   justify-content: center;
   align-items: center;
   border: solid 1px;
+  border-color: #B0D9B6;
   margin-top: 50px;
+  margin-bottom: 30px;
   padding: 20px;
   p {
     font-size: 25px;
     font-weight: 900;
     color: #77a68b;
-    margin-bottom: 10px;
+    margin: 10px;
   }
   span {
     color: #B0D9B6;
   }
 `
+
+export const UserInfo = styled.div`
+display: flex;
+flex-direction: column;
+color: #17403C;
+
+  p {
+    margin: 10px;
+  }
+
+  h4 {
+    padding-left: 10px;
+    margin: 10px;
+  }
+`
+
