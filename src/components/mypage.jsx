@@ -5,23 +5,26 @@ import api from "./api";
 import { PiPhoneLight } from "react-icons/pi";
 import { IoLocationOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { InfoContainer, Profile } from "./styles";
+import { InfoContainer, Profile, UserInfo } from "./styles";
 import { FiHome } from "react-icons/fi";
+import vegelogo from "../sellers/sellerphotos/vege_logo.png";
+import "../css/homepage.css"
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90vw;
-  height: 50px;
-  margin: 20px;
-  button {
-    background-color: #B0D9B6;
-    border: solid;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    padding: 10px 30px;
+  padding: 20px;
+	background-color: white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  span {
+    margin-right: 15px;
+    color: #77a68b;
+    font-weight: 600;
+  }
+  h2 {
+    color: #17403C
   }
 `
 
@@ -77,20 +80,33 @@ export default function Mypage() {
   return (
     <div>
       <Header>
-        <button onClick={navigateHome} style={{cursor: "pointer"}}>홈 <FiHome/></button>
+        <div className="logo"
+        onClick={navigateHome}
+        style={{cursor: "pointer"}}>
+          <img src={vegelogo} alt="logo"/>
+        </div>
         <h2>My Page</h2>
-        <button onClick={handlelogout} style={{cursor: "pointer"}}>로그아웃</button>
+        <div className='nav-links'>
+					<span
+            onClick={handlelogout}
+            style={{cursor: "pointer"}}
+          >로그아웃</span>
+				</div>
       </Header>
       <InfoContainer>
-        <Profile>
-          <CgProfile size = {70} style={{color: '#77A68B'}}/>
-          <p>{userInfo.username}</p>
-          <span>{userInfo.nickname}</span>
-        </Profile>
         <div>
-          <p><PiPhoneLight/> {userInfo.phonenumber}</p> 
-          <p><IoLocationOutline/> {userInfo.city} {userInfo.district} {userInfo.dong} {userInfo.detailLocation}</p>
+          <Profile>
+            <CgProfile size = {70} style={{color: '#77A68B'}}/>
+            <p>{userInfo.username}</p>
+            <span>{userInfo.nickname}</span>
+          </Profile>
+          <UserInfo>
+          <h4>회원님은 {userInfo.seller} 입니다.</h4>
+            <p><PiPhoneLight/> {userInfo.phonenumber}</p> 
+            <p><IoLocationOutline/> {userInfo.city} {userInfo.district} {userInfo.dong} {userInfo.detailLocation}</p>
+          </UserInfo>
         </div>
+        
       </InfoContainer>      
     </div>
   )

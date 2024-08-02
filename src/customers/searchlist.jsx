@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import noImage from "./img/no-image.jpg";
 import styled from "styled-components";
 import api from "../components/api";
@@ -14,15 +14,15 @@ const ProductInfo = styled.div`
 
 
 export default function SearchList() {
-  //const { place } = useParams();
+  const { place } = useParams();
   const [ contents, setContents ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
   const navigate = useNavigate();
   const defaultImage = noImage
-  const urlParams = new URLSearchParams(useLocation().search)
+  //const urlParams = new URLSearchParams(useLocation().search)
 
-
+  //가격 천단위 ,
   const handleNumber =(number) => {
     const formattedNumber = new Intl.NumberFormat('en-US').format(number);
     return(formattedNumber)
@@ -33,15 +33,15 @@ export default function SearchList() {
   }
   
   const getContents = () => {
-    const query = urlParams.get('q')
+    console.log(place)
     setLoading(true);
-    api.get(`/customer/${query}`)
+    api.get(`/customer/${place}`)
       .then((res) => {
         console.log('글 불러오기 완료');
         setLoading(false);
         setContents(res.data);
         if (!contents || contents.length === 0) {
-          return <p>가게가 없습니다.</p>;
+          return <p>아직 등록된 가게가 없습니다.</p>;
         }
       })
       .catch((err) => {
@@ -53,7 +53,7 @@ export default function SearchList() {
 
   useEffect(() => {
     getContents();
-  }, [])
+  }, [place])
 
 
   if (loading) {

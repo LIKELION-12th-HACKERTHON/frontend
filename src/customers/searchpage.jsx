@@ -5,7 +5,7 @@ import SearchList from './searchlist'
 
 export default function Searchpage () {
   return (
-    <div>
+    <div className='search-wrapper'>
       <Searchbar/>
       <SearchList/>
     </div>
