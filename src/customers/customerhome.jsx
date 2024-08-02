@@ -7,7 +7,7 @@ export default function CustomerHome() {
   const navigate = useNavigate();
 
   const handlevegClick = () => {
-    navigate("/", {replace: true});
+    navigate("/customer", {replace: true});
   };
 
   const handlelogout = () => {
@@ -23,13 +23,27 @@ export default function CustomerHome() {
 
   return(
     <div className="customer-home">
-      <div className="header">
-        <h2 onClick={handlevegClick} style={{ cursor: "pointer"}}>배지</h2>
-        <div>
-          <span onClick={handleMypage} style={{cursor: "pointer"}}>내정보</span>
-          <span onClick={handlelogout} style={{cursor: "pointer"}}>로그아웃</span>
-        </div>
-      </div>
+      <nav className='navbar'>
+						<div className='logo'>
+							<img 
+              src='logo.png'
+              alt='Our Vege Logo'
+              onClick={handlevegClick}
+              style={{ cursor: "pointer"}}
+              />
+						</div>
+						<div className='nav-links'>
+							<span
+                className='active'
+                onClick={handleMypage}
+                style={{cursor: "pointer"}}
+              >내정보</span>
+							<span
+                onClick={handlelogout}
+                style={{cursor: "pointer"}}
+              >로그아웃</span>
+						</div>
+					</nav>
       <div className="homebanner">
         <img src={homeimg}/>
       </div>
