@@ -2,7 +2,6 @@ import React from "react";
 import Sellernav from "./sellernav.jsx";
 import Sellerid from "./components/sellerid.jsx";
 import styled from "styled-components";
-import Dsellershop from "./practice/dsellershop.jsx";
 import Menunav from "./components/menunav.jsx";
 
 const Maincontents = styled.div`

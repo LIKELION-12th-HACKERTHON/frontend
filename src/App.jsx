@@ -9,6 +9,7 @@ import Searchpage from "./customers/searchpage.jsx";
 import SellermainPage from "./sellers/sellermainpage.jsx";
 import Mypage from "./components/mypage.jsx";
 import Detailpage from "./customers/detailpage.jsx";
+import Shopkeeper from "./sellers/seller_order/Shopkeeper.jsx";
 
 function App() {
 	return (
@@ -20,13 +21,13 @@ function App() {
 					<Route index={true} element={<InitialSearch/>}/>
 					<Route path='search' element={<Searchpage/>}/>
 				</Route>
-				{/* <Route path='/seller' element={<SellerPage />} /> */}
 				<Route path='/customer' element={<CustomerHome />} />
 				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/seller' element={<SellermainPage />} />
 				<Route path='/sellershop' element={<Sellershop />} />
-				<Route path='/mypage' element={<Mypage/>}/>
-				<Route path='/detail/:id' element={<Detailpage/>}/>
+				<Route path='/mypage' element={<Mypage />} />
+				<Route path='/shopkeeper' element={<Shopkeeper />} />
+				<Route path='/detail/:id' element={<Detailpage />} />
 			</Routes>
 		</Router>
 	);

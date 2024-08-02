@@ -1,6 +1,6 @@
 import React from "react";
 import "../sellers/sellercss/sellernav.css";
-import logogreen from "../sellers/sellerphotos/greenlogo.png";
+import vegelogo from "./sellerphotos/vege_logo.png";
 import { useNavigate } from "react-router-dom";
 import useMemberStore from "../store/memberStore";
 import { IoPersonCircleSharp } from "react-icons/io5";
@@ -10,11 +10,15 @@ export default function Sellernav() {
 	const { loginMember, setLoginMember } = useMemberStore();
 
 	function logout() {
-		setLoginMember(null);
+		localStorage.clear();
+		setLoginMember(null); // Zustand 스토어의 loginMember 상태를 null로 설정
 		navigate("/");
-		console.log("Current login member:", loginMember);
-	}
 
+		setTimeout(() => {
+			const currentLoginMember = useMemberStore.getState().loginMember;
+			console.log("Current login member:", currentLoginMember);
+		}, 2000);
+	}
 	const LoginButton = () => (
 		<button className='loginbuttonclass' onClick={() => navigate("/login")}>
 			로그인
@@ -28,7 +32,7 @@ export default function Sellernav() {
 	);
 
 	const MyPageButton = () => (
-		<button className='mypagebuttonclass' onClick={navigate("/sellershop")}>
+		<button className='mypagebuttonclass' onClick={() => navigate("/sellershop")}>
 			<IoPersonCircleSharp size='2rem' />
 		</button>
 	);
@@ -36,7 +40,7 @@ export default function Sellernav() {
 	return (
 		<div className='navbarwhite'>
 			<img
-				src={logogreen}
+				src={vegelogo}
 				className='imgb'
 				alt='Logo'
 				id='logo'
@@ -45,7 +49,6 @@ export default function Sellernav() {
 			<div className='tabBar'>
 				{loginMember ? <LogoutButton /> : <LoginButton />}
 				{loginMember && <MyPageButton />}
-				{/* <button onClick={() => navigate("/sellershop")}>My page</button> */}
 			</div>
 		</div>
 	);
