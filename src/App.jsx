@@ -10,6 +10,7 @@ import SellermainPage from "./sellers/sellermainpage.jsx";
 import Mypage from "./components/mypage.jsx";
 import Detailpage from "./customers/detailpage.jsx";
 import Shopkeeper from "./sellers/seller_order/Shopkeeper.jsx";
+import ReviewPage from "./sellers/seller_order/Shopkeeperpages/ReviewPage.jsx";
 
 function App() {
 	return (
@@ -18,8 +19,8 @@ function App() {
 				<Route path='/' element={<Homepage />} />
 				<Route path='/login' element={<FormLogin />} />
 				<Route path='/customer' element={<CustomerHome />}>
-					<Route index={true} element={<InitialSearch/>}/>
-					<Route path='search/:place' element={<Searchpage/>}/>
+					<Route index={true} element={<InitialSearch />} />
+					<Route path='search/:place' element={<Searchpage />} />
 				</Route>
 				<Route path='/customer' element={<CustomerHome />} />
 				<Route path='/seller' element={<SellermainPage />} />
@@ -28,6 +29,7 @@ function App() {
 				<Route path='/mypage' element={<Mypage />} />
 				<Route path='/shopkeeper' element={<Shopkeeper />} />
 				<Route path='/detail/:id' element={<Detailpage />} />
+				<Route path='/review/:id' element={<ReviewPage />} />
 			</Routes>
 		</Router>
 	);

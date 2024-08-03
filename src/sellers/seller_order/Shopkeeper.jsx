@@ -8,6 +8,7 @@ import Stockspage from "./Shopkeeperpages/stockspage";
 import Stats from "./Shopkeeperpages/stats";
 import Sellersetting from "./Shopkeeperpages/sellersetting";
 import MenuList from "./Shopkeeperpages/MenuList.jsx";
+import ReviewPage from "./Shopkeeperpages/ReviewPage.jsx";
 
 const Shopkeeper = () => {
 	const [currentPage, setCurrentPage] = useState("dashboard");
@@ -26,6 +27,8 @@ const Shopkeeper = () => {
 				return <MenuList />;
 			case "sellersetting":
 				return <Sellersetting />;
+			case "review":
+				return <ReviewPage />;
 			default:
 				return <Dashboard />;
 		}
