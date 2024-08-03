@@ -1,0 +1,67 @@
+.order-brief {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+	padding: 20px;
+}
+
+.card {
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+	font-size: 2.5rem;
+	margin-right: 15px;
+}
+
+.card-content {
+	flex-grow: 1;
+}
+
+h3 {
+	margin: 0 0 10px 0;
+	font-size: 1rem;
+	color: #333;
+}
+
+.count {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+#todayOrder .icon {
+	color: #3498db;
+}
+#totalReviews .icon {
+	color: #f1c40f;
+}
+#orderIncomplete .icon {
+	color: #e74c3c;
+}
+#orderComplete .icon {
+	color: #2ecc71;
+}
+
+@media (max-width: 768px) {
+	.order-brief {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 480px) {
+	.order-brief {
+		grid-template-columns: 1fr;
+	}
+}

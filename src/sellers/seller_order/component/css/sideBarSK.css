@@ -1,21 +1,53 @@
 * {
-	font-family: Arial, sans-serif;
+	font-family: "Arial", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .maincontent {
 	display: flex;
 	width: 100vw;
 }
+
 .marketsidebar {
 	display: flex;
 	flex-direction: column;
-	width: 8vw;
-	padding-top: 1%;
-	/* justify-content: left; */
+	width: 15vw; /* 넓이를 약간 넓게 설정 */
+	background-color: #2d3d50;
+	border-right: 1px solid #2d3d50; /* 오른쪽 경계선 */
+	padding-top: 2rem;
+	align-items: center;
 	height: 100vh;
-	.marketsidebarbtn {
-		font-weight: bolder;
-		font-size: 1rem;
-		height: 4rem;
-	}
+}
+
+.marketsidebarbtn {
+	font-weight: bold;
+	font-size: 1.1rem;
+	height: 3rem;
+	width: 100%; /* 버튼을 사이드바 너비에 맞게 설정 */
+	color: #333;
+	background-color: #2d3d50;
+	border: none;
+	border-bottom: 1px solid #273443; /* 버튼 사이 경계선 */
+	cursor: pointer;
+	text-align: left;
+	padding-left: 1rem;
+	transition: background-color 0.3s, color 0.3s;
+	color: white;
+}
+
+.marketsidebarbtn:hover {
+	background-color: #04b04c; /* 버튼 호버 시 배경색 */
+	color: white;
+}
+
+#logininfo {
+	font-size: 1rem;
+	color: #555;
+	background-color: #e9ecef;
+	padding: 1rem;
+	text-align: center;
+	width: 100%;
+	border-bottom: 2px solid #dee2e6;
 }

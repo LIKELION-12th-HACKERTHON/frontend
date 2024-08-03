@@ -1,5 +1,8 @@
 import React from "react";
+import Sellersettingcompo from "./settingcompo";
 
-export default function Sellersetting() {
-	return <div>S</div>;
-}
+const sellersetting = () => {
+	return <Sellersettingcompo></Sellersettingcompo>;
+};
+
+export default sellersetting;

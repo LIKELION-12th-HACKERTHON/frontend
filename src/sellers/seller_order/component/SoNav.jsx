@@ -10,6 +10,9 @@ const BigPart = styled.div`
 	@media (max-width: 768px) {
 		flex-direction: column;
 	}
+	width: 100vw;
+	background-color: #2d3d50;
+	border-bottom: 2px solid #efffff;
 `;
 
 const SearchPart = styled.div`
@@ -23,12 +26,9 @@ const SearchOrder = styled.input.attrs({ placeholder: "주문 검색어를 입�
 `;
 
 const SearchOrderBtn = styled.button`
+	font-weight: bolder;
 	width: 5rem;
 	margin-left: 1rem;
-`;
-
-const BackButton = styled.button`
-	// 여기에 필요한 스타일 추가
 `;
 
 function SoNav() {
@@ -44,15 +44,11 @@ function SoNav() {
 	return (
 		<BigPart>
 			<Logo />
-			<div onClick={handleLogoClick} style={{ cursor: "pointer" }}>
-				<h1>처음으로</h1>
-			</div>
 			<SearchPart>
 				<label htmlFor='search-order'></label>
 				<SearchOrder id='search-order' />
 				<SearchOrderBtn onClick={handleSearch}>검색</SearchOrderBtn>
 			</SearchPart>
-			<BackButton onClick={() => navigate("/sellershop")}>원상복귀</BackButton>
 		</BigPart>
 	);
 }
