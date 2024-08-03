@@ -13,8 +13,8 @@ export default function CustomerHome() {
 
   const handlelogout = () => {
     if (window.confirm("정말 로그아웃 하시겠습니까?")) {
+      localStorage.removeItem("accessToken")
       navigate("/", {replace: true})
-      //쿠키 삭제 로직 추가 예정
     }
   }
 

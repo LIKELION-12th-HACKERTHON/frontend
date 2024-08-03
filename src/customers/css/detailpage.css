@@ -1,3 +1,9 @@
+.detail-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .navbar {
 	display: flex;
 	justify-content: space-between;
@@ -21,4 +27,30 @@
 
 .nav-links span.active {
 	color: #04b04c;
+}
+
+.store-info {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	justify-content: center;
+	p {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.menu-info {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	justify-content: center;
+	p {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.img-container {
+	display: flex;
 }
