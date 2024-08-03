@@ -17,8 +17,8 @@ export default function Detailpage() {
 
   const handlelogout = () => {
     if (window.confirm("정말 로그아웃 하시겠습니까?")) {
+      localStorage.removeItem("accessToken")
       navigate("/", {replace: true})
-      //쿠키 삭제 로직 추가 예정
     }
   }
 
@@ -27,7 +27,10 @@ export default function Detailpage() {
   }
 
   const getContent = () => {
-    api.get(`/boss/post/${id}`)
+    const token = localStorage.getItem("accessToken")
+    api.get(`/boss/post/${id}`, { hearders: {
+      Authorization: `Bearer ${token}`}
+    })
       .then((res) => {
         console.log('상세 조회 완료');
         setContent(res.data);
@@ -43,7 +46,7 @@ export default function Detailpage() {
 
   //판매글 상세 조회에서 가져올 것
   return (
-    <div>
+    <div className='detail-page'>
       <nav className='navbar'>
 				<div className='logo'>
 					<img 
@@ -71,7 +74,7 @@ export default function Detailpage() {
         <p>영업 종료 시간 {content.close}</p>
       </div>
       <div className='menu-info'>
-        <div>
+        <div className='img-container'>
           <img src={content.image || defaultImage} alt='product-picture'/>
         </div>
         <p>{content.product}</p>

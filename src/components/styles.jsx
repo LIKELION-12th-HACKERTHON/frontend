@@ -6,6 +6,10 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  h3 {
+    margin-top: 60px;
+    color: #17403C;
+  }
 `
 
 export const Profile = styled.div`
@@ -13,8 +17,10 @@ export const Profile = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 30%;
   border: solid 1px;
   border-color: #B0D9B6;
+  margin: 50px 50px 30px 0px;
   margin-top: 50px;
   margin-bottom: 30px;
   padding: 20px;

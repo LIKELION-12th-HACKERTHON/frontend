@@ -42,6 +42,13 @@
 	color: #04b04c;
 }
 
+.myinfo-box {
+	display: flex;
+	width: 80vw;
+	justify-content: center;
+	align-items: center;
+}
+
 main {
 	display: flex;
 	flex: 1;
