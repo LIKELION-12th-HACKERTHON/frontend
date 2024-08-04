@@ -9,7 +9,7 @@
 .marketsidebar {
 	display: flex;
 	flex-direction: column;
-	width: 8vw;
+	width: 5vw;
 	/* justify-content: left; */
 	/* height: 100vh; */
 	.marketsidebarbtn {

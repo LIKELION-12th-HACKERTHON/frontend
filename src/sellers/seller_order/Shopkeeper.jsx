@@ -39,7 +39,7 @@ const Shopkeeper = () => {
 			<SoNav />
 			<div className='maincontent'>
 				<div className='marketsidebar'>
-					<SideBarSK setCurrentPage={setCurrentPage} />
+					<SideBarSK currentPage={currentPage} setCurrentPage={setCurrentPage} />{" "}
 				</div>
 				<div className='mainpart'>{renderPage()}</div>
 			</div>
