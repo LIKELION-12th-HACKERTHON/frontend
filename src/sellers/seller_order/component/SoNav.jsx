@@ -6,7 +6,7 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import useMemberStore from "../../../store/memberStore";
 
 const NavContainer = styled.nav`
-	padding: 1rem;
+	padding: 0.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -81,7 +81,7 @@ function SoNav() {
 			<Logo onClick={handleLogoClick} />
 			<ButtonGroup>
 				<LogoutButton onClick={logout}>로그아웃</LogoutButton>
-				<MyPageButton onClick={() => navigate("/sellershop")}>
+				<MyPageButton onClick={() => navigate("/shopkeeper")}>
 					<IoPersonCircleSharp size='1.5rem' />
 				</MyPageButton>
 			</ButtonGroup>

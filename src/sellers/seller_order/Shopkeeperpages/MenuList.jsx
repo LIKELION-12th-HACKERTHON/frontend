@@ -15,6 +15,8 @@ const MenuGrid = styled.div`
 const MenuItem = styled.div`
 	border: 1px solid #ddd;
 	border-radius: 8px;
+	height: 500px;
+	background-color: white;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -28,6 +30,9 @@ const MenuImage = styled.img`
 const MenuInfo = styled.div`
 	padding: 15px;
 	background-color: white;
+	flex: 1; /* 남은 공간을 채우도록 설정 */
+	display: flex;
+	flex-direction: column;
 `;
 const Sebu = styled.div`
 	padding: 15px 0px;
@@ -60,7 +65,7 @@ const Description = styled.div`
 	justify-content: bottom;
 	margin-right: 0px;
 	margin-bottom: 0px;
-	height: 140px;
+	flex: 1; /* 남은 공간을 채우도록 설정 */
 `;
 const Type = styled.div`
 	font-size: 0.9em;
@@ -156,7 +161,7 @@ const MenuList = () => {
 						<Sebu>
 							<Star>
 								<MenuPrice>₩ {item.price} 원</MenuPrice>
-								<Link to={`/review/${item.user}`}>Review</Link>
+
 								<FaStar color='#ffcb6b' onClick={() => navigate(`/review/${item.id}`)} />
 							</Star>
 						</Sebu>
@@ -171,16 +176,22 @@ const MenuList = () => {
 								위치: {item.city} {item.district} {item.dong}
 							</div>
 							<div>마감 시간: {item.close}</div>
-							<div style={{ marginTop: "10px" }}>
-								<QuantityInput
-									type='number'
-									min='0'
-									value={quantityInputs[item.id] || ""}
-									onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-								/>
-								<UpdateButton onClick={() => handleUpdateQuantity(item)}>수량 수정</UpdateButton>
-							</div>
 						</Description>
+						<div
+							style={{
+								marginTop: "auto",
+								display: "flex",
+								justifyContent: "flex-end",
+								alignItems: "flex-end",
+							}}>
+							<QuantityInput
+								type='number'
+								min='0'
+								value={quantityInputs[item.id] || ""}
+								onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+							/>
+							<UpdateButton onClick={() => handleUpdateQuantity(item)}>수량 수정</UpdateButton>
+						</div>
 					</MenuInfo>
 				</MenuItem>
 			))}

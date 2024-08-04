@@ -10,6 +10,8 @@ import Sellersetting from "./Shopkeeperpages/sellersetting";
 import MenuList from "./Shopkeeperpages/MenuList.jsx";
 import ReviewPage from "./Shopkeeperpages/ReviewPage.jsx";
 
+import SellerBanner from "../sellerbanner.jsx";
+
 const Shopkeeper = () => {
 	const [currentPage, setCurrentPage] = useState("dashboard");
 
@@ -35,16 +37,18 @@ const Shopkeeper = () => {
 	};
 
 	return (
-		<div>
+		<div className='shopkeeper-container'>
 			<SoNav />
 			<div className='maincontent'>
 				<div className='marketsidebar'>
-					<SideBarSK currentPage={currentPage} setCurrentPage={setCurrentPage} />{" "}
+					<SideBarSK currentPage={currentPage} setCurrentPage={setCurrentPage} />
 				</div>
-				<div className='mainpart'>{renderPage()}</div>
+				<div className='mainpart'>
+					<div className='page-content'>{renderPage()}</div>
+				</div>
 			</div>
+			<SellerBanner />
 		</div>
 	);
 };
-
 export default Shopkeeper;
