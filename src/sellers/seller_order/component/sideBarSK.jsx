@@ -2,42 +2,41 @@ import React from "react";
 import "./css/sideBarSK.css";
 import useMemberStore from "../../../store/memberStore";
 
-const SideBarSK = ({ setCurrentPage }) => {
+const SideBarSK = ({ currentPage, setCurrentPage }) => {
 	const memberStore = useMemberStore();
+
+	const getButtonClass = (pageName) => {
+		return `marketsidebarbtn ${currentPage === pageName ? "active" : ""}`;
+	};
+
 	return (
 		<div className='marketsidebar'>
-			<div className='marketsidebarbtn' id='logininfo'>
-				접속자:
-				{memberStore.loginMember.username}
-				{memberStore.loginMember.nickname}
+			<div className='user-info'>
+				<div className='user-avatar'>{memberStore.loginMember.username[0]}</div>
+				<div className='user-details'>
+					<div className='user-name'>{memberStore.loginMember.username}</div>
+					<div className='user-nickname'>{memberStore.loginMember.nickname}</div>
+				</div>
 			</div>
-			<button
-				className='marketsidebarbtn'
-				id='dashboard'
-				onClick={() => setCurrentPage("dashboard")}>
+			<button className={getButtonClass("dashboard")} onClick={() => setCurrentPage("dashboard")}>
 				대시보드
 			</button>
 			<button
-				className='marketsidebarbtn'
-				id='Orderss'
+				className={getButtonClass("orderManagement")}
 				onClick={() => setCurrentPage("orderManagement")}>
 				주문관리
 			</button>
-			<button className='marketsidebarbtn' id='menuList' onClick={() => setCurrentPage("menuList")}>
+			<button className={getButtonClass("menuList")} onClick={() => setCurrentPage("menuList")}>
 				재고 현황
 			</button>
-			<button className='marketsidebarbtn' id='Stocks' onClick={() => setCurrentPage("stockspage")}>
+			<button className={getButtonClass("stockspage")} onClick={() => setCurrentPage("stockspage")}>
 				재고 등록
 			</button>
-			<button className='marketsidebarbtn' id='Stats' onClick={() => setCurrentPage("stats")}>
-				통계
-			</button>
-			<button className='marketsidebarbtn' id='Review' onClick={() => setCurrentPage("review")}>
+			<button className={getButtonClass("review")} onClick={() => setCurrentPage("review")}>
 				리뷰
 			</button>
 			<button
-				className='marketsidebarbtn'
-				id='Sellersetting'
+				className={getButtonClass("sellersetting")}
 				onClick={() => setCurrentPage("sellersetting")}>
 				설정
 			</button>

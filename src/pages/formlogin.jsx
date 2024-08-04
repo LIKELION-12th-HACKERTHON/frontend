@@ -87,7 +87,7 @@ export default function FormLogin() {
 			if (formData.seller === "구매자") {
 				navigate("/customer");
 			} else {
-				navigate("/sellershop");
+				navigate("/shopkeeper");
 			}
 		} catch (error) {
 			console.error("로그인 실패", error.response?.data || error.message);

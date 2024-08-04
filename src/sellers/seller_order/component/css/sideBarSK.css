@@ -1,53 +1,75 @@
-* {
-	font-family: "Arial", sans-serif;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-.maincontent {
-	display: flex;
-	width: 100vw;
-}
+/* 기존 스타일은 유지하고 다음 스타일을 추가 또는 수정합니다 */
 
 .marketsidebar {
 	display: flex;
 	flex-direction: column;
-	width: 15vw; /* 넓이를 약간 넓게 설정 */
+	width: 15vw;
 	background-color: #2d3d50;
-	border-right: 1px solid #2d3d50; /* 오른쪽 경계선 */
-	padding-top: 2rem;
+	border-right: 1px solid #2d3d50;
 	align-items: center;
 	height: 100vh;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	padding: 1.5rem 1rem;
+	background-color: #1e2a3a;
+	width: 100%;
+	border-bottom: 1px solid #3a4b5f;
+}
+
+.user-avatar {
+	width: 3rem;
+	height: 3rem;
+	background-color: #4caf50;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	color: white;
+	font-weight: bold;
+	margin-right: 1rem;
+}
+
+.user-details {
+	flex-grow: 1;
+}
+
+.user-name {
+	font-size: 1rem;
+	font-weight: bold;
+	color: #ffffff;
+	margin-bottom: 0.25rem;
+}
+
+.user-nickname {
+	font-size: 0.9rem;
+	color: #a0aec0;
 }
 
 .marketsidebarbtn {
 	font-weight: bold;
 	font-size: 1.1rem;
-	height: 3rem;
-	width: 100%; /* 버튼을 사이드바 너비에 맞게 설정 */
-	color: #333;
-	background-color: #2d3d50;
+	height: 3.5rem;
+	width: 100%;
+	color: #e0e0e0;
+	background-color: transparent;
 	border: none;
-	border-bottom: 1px solid #273443; /* 버튼 사이 경계선 */
+	border-bottom: 1px solid #3a4b5f;
 	cursor: pointer;
 	text-align: left;
 	padding-left: 1rem;
 	transition: background-color 0.3s, color 0.3s;
-	color: white;
 }
 
 .marketsidebarbtn:hover {
-	background-color: #04b04c; /* 버튼 호버 시 배경색 */
+	background-color: #3a4b5f;
 	color: white;
 }
 
-#logininfo {
-	font-size: 1rem;
-	color: #555;
-	background-color: #e9ecef;
-	padding: 1rem;
-	text-align: center;
-	width: 100%;
-	border-bottom: 2px solid #dee2e6;
+.marketsidebarbtn.active {
+	background-color: #4caf50;
+	color: white;
 }
