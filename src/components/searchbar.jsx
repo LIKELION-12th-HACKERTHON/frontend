@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
 const Input = styled.input`
 	width: 90vw;
 	max-width: 500px;
-	height: 30px;
+	height: 43px;
 	&:focus {
 		border-color: #b0d9b6;
 		border-width: 1.5px;
@@ -24,7 +24,8 @@ const Button = styled.button`
 	align-items: center;
 	background-color: #d2d2d2;
 	margin-left: 20px;
-	height: 43px;
+	padding: 3px 10px;
+	height: 42px;
 	border-radius: 5px;
 	font-size: 15px;
 	&:hover {
