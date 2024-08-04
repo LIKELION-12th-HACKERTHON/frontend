@@ -33,16 +33,12 @@ export default function SearchList() {
   }
   
   const getContents = () => {
-    console.log(place)
     setLoading(true);
     api.get(`/customer/${place}`)
       .then((res) => {
         console.log('글 불러오기 완료');
         setLoading(false);
         setContents(res.data);
-        if (!contents || contents.length === 0) {
-          return <p>아직 등록된 가게가 없습니다.</p>;
-        }
       })
       .catch((err) => {
         console.error('에러: ', err);
@@ -60,6 +56,9 @@ export default function SearchList() {
     return <div>게시글을 불러오고 있습니다...</div>
   }
 
+  if (!contents || contents.length === 0) {
+    return <p>아직 등록된 가게가 없습니다.</p>;
+  }
   //발생 가능 오류에 대해 if출력문 만들기
 
   return(
