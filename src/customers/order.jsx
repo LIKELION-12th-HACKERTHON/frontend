@@ -61,6 +61,7 @@ export default function Order({quantity}) {
       const response = await api.post(`/customer/order/${id}/request/`, data, { hearders: {Authorization: `Bearer ${token}`}
       })
       console.log('응답 완료', response);
+      alert('주문이 완료되었습니다.')
       setOrder('0');
       setBody('');
       setTime();
@@ -86,9 +87,9 @@ export default function Order({quantity}) {
         <label className='time-label'>
           {/* 시간 10시부터 */}
           <select value={hour} onChange={handleHourChange}>
-            {[...Array(24)].map((_, i) => (
-              <option key={i + 1} value={i + 1}>
-                {i + 1}
+            {[...Array(12)].map((_, i) => (
+              <option key={i + 12} value={i + 12}>
+                {i + 12}
               </option>
             ))}
           </select>

@@ -12,6 +12,8 @@ import Detailpage from "./customers/detailpage.jsx";
 import Shopkeeper from "./sellers/seller_order/Shopkeeper.jsx";
 import ReviewPage from "./sellers/seller_order/Shopkeeperpages/ReviewPage.jsx";
 import CustomerProfile from "./customers/customerProfile.jsx";
+import CustomerEdit from "./customers/customerEdit.jsx";
+import MyorderList from "./customers/myorderlist.jsx";
 
 function App() {
 	return (
@@ -30,6 +32,8 @@ function App() {
 				<Route path='/mypage' element={<Mypage />}>
 					<Route index={true} element={<CustomerProfile/>}/>
 					<Route path='profile' element={<CustomerProfile/>}/>
+					<Route path='edit' element={<CustomerEdit/>}/>
+					<Route path='orderhistory' element={<MyorderList/>}/>
 				</Route>
 				<Route path='/shopkeeper' element={<Shopkeeper />} />
 				<Route path='/detail/:id' element={<Detailpage />} />
