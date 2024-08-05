@@ -55,6 +55,8 @@ export default function Detailpage() {
     return(formattedNumber)
   };
 
+  const imgPath = `https://ourveg.store${content.image}`
+
   //판매글 상세 조회에서 가져올 것
   return (
     <div className='detail-page'>
@@ -86,10 +88,18 @@ export default function Detailpage() {
       </div>
       <div className='menu-info'>
         <div className='img-container'>
-          <img src={ content.img || defaultImage} alt='product-picture'/>
+          <img
+          src={`https://ourvege.store${content.image}`}
+					alt={content.product}
+					onError={(e) => {
+						console.error("Image load failed:", e.target.src);
+						e.target.src = defaultImage;
+					}}
+          />
         </div>
         <div className='info-container'>
           <p className='menu-name'>{content.product}</p>
+          {/* 0개이면 품절로 뜨개 */}
           <p>현재 수량: {content.quantity}개</p>
           <p>가격: {handleNumber(content.price)}원</p>
           <p>{content.body}</p>

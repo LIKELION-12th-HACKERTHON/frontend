@@ -83,7 +83,8 @@ export default function Order({quantity}) {
       <OrderForm>
         <h4>픽업 시간</h4>
         <div>
-        <label>
+        <label className='time-label'>
+          {/* 시간 10시부터 */}
           <select value={hour} onChange={handleHourChange}>
             {[...Array(24)].map((_, i) => (
               <option key={i + 1} value={i + 1}>
