@@ -31,18 +31,7 @@ const EditButton = styled.button`
 
 export default function CustomerProfile() {
   //데이터 받아오기 전까지 임시 사용 css위해
-  const [userInfo, setUserInfo] = useState({
-    id: "1",
-    username: "한채리",
-    nickname: "체리",
-    city: "경기도 군포시",
-    district: "",
-    dong: "대야미동",
-    email: 'cherry@hufs.ac.kr',
-    detail_location: '신안실크밸리 아파트',
-    phone_number: '010-0000-0000',
-    seller: '구매자'
-  });
+  const [userInfo, setUserInfo] = useState({});
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -64,9 +53,12 @@ export default function CustomerProfile() {
   };
 
   useEffect(() => {
-    //getUserInfo()
+    getUserInfo()
   }, []);
 
+  const handleButton = () => {
+    navigate('/mypage/edit')
+  }
 
   if (error) {
     return <div>오류: {error.message}</div>;
@@ -76,7 +68,7 @@ export default function CustomerProfile() {
     <div className="profile-container">
       <div className="profile-header">
         <h2>프로필</h2>
-        <EditButton>수정하기</EditButton>
+        <EditButton onClick={handleButton} >수정하기</EditButton>
       </div>
       <hr></hr>
       <InfoContainer>
