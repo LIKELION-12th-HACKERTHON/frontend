@@ -2,54 +2,90 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../../components/logo";
 import { useNavigate } from "react-router-dom";
+import { IoPersonCircleSharp } from "react-icons/io5";
+import useMemberStore from "../../../store/memberStore";
 
-const BigPart = styled.div`
-	padding-top: 1%;
-	margin-right: 1%;
+const NavContainer = styled.nav`
+	padding: 0.5rem;
 	display: flex;
-	@media (max-width: 768px) {
-		flex-direction: column;
-	}
-	width: 100vw;
+	justify-content: space-between;
+	align-items: center;
 	background-color: #2d3d50;
 	border-bottom: 2px solid #efffff;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: stretch;
+	}
 `;
 
-const SearchPart = styled.div`
+const ButtonGroup = styled.div`
 	display: flex;
-	flex: 1;
-	padding: 20px 0px;
+	gap: 1rem;
+
+	@media (max-width: 768px) {
+		margin-top: 1rem;
+		justify-content: center;
+	}
 `;
 
-const SearchOrder = styled.input.attrs({ placeholder: "주문 검색어를 입력하세요" })`
-	// 여기에 필요한 스타일 추가
+const NavButton = styled.button`
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	background-color: #4a5568;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: #2c3e50;
+	}
 `;
 
-const SearchOrderBtn = styled.button`
-	font-weight: bolder;
-	width: 5rem;
-	margin-left: 1rem;
+const LogoutButton = styled(NavButton)`
+	background-color: #e53e3e;
+
+	&:hover {
+		background-color: #c53030;
+	}
+`;
+
+const MyPageButton = styled(NavButton)`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 function SoNav() {
 	const navigate = useNavigate();
+	const { loginMember, setLoginMember } = useMemberStore();
 
-	const handleSearch = () => {
-		// 검색 로직 구현
-	};
+	function logout() {
+		localStorage.clear();
+		setLoginMember(null);
+		navigate("/");
+
+		setTimeout(() => {
+			const currentLoginMember = useMemberStore.getState().loginMember;
+			console.log("Current login member:", currentLoginMember);
+		}, 2000);
+	}
+
 	const handleLogoClick = () => {
-		navigate("/"); // 로고를 클릭했을 때 이동할 경로 설정
+		navigate("/");
 	};
 
 	return (
-		<BigPart>
-			<Logo />
-			<SearchPart>
-				<label htmlFor='search-order'></label>
-				<SearchOrder id='search-order' />
-				<SearchOrderBtn onClick={handleSearch}>검색</SearchOrderBtn>
-			</SearchPart>
-		</BigPart>
+		<NavContainer>
+			<Logo onClick={handleLogoClick} />
+			<ButtonGroup>
+				<LogoutButton onClick={logout}>로그아웃</LogoutButton>
+				<MyPageButton onClick={() => navigate("/shopkeeper")}>
+					<IoPersonCircleSharp size='1.5rem' />
+				</MyPageButton>
+			</ButtonGroup>
+		</NavContainer>
 	);
 }
 

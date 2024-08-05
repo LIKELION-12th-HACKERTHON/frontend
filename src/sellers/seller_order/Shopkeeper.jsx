@@ -35,16 +35,17 @@ const Shopkeeper = () => {
 	};
 
 	return (
-		<div>
+		<div className='shopkeeper-container'>
 			<SoNav />
 			<div className='maincontent'>
 				<div className='marketsidebar'>
-					<SideBarSK setCurrentPage={setCurrentPage} />
+					<SideBarSK currentPage={currentPage} setCurrentPage={setCurrentPage} />
 				</div>
-				<div className='mainpart'>{renderPage()}</div>
+				<div className='mainpart'>
+					<div className='page-content'>{renderPage()}</div>
+				</div>
 			</div>
 		</div>
 	);
 };
-
 export default Shopkeeper;

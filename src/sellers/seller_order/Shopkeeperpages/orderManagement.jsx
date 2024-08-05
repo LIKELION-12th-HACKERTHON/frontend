@@ -1,5 +1,12 @@
 import React from "react";
+import GetOrder2 from "./getorder2";
 
-export default function orderManagement() {
-	return <div>orderManagement</div>;
-}
+const OrderManagement = () => {
+	return (
+		<div>
+			<GetOrder2 />
+		</div>
+	);
+};
+
+export default OrderManagement;

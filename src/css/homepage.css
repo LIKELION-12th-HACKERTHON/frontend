@@ -103,6 +103,7 @@ main {
 .ad-container h3 {
 	color: #04b04c;
 	margin-bottom: 10px;
+	margin-top: 70px;
 }
 
 .ad-container p {
@@ -111,7 +112,7 @@ main {
 
 .ad-container img {
 	width: 100%;
-	max-width: 300px;
+	max-width: 1000px; /* 이미지의 최대 너비 조정 */
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
@@ -243,4 +244,20 @@ i {
 .profile-header {
 	display: flex;
 	justify-content: space-between;
+}
+
+.bannerfooter {
+	width: 100%;
+	display: flex;
+	justify-content: center; /* 가로 정렬 */
+	align-items: center; /* 세로 정렬 */
+	position: relative;
+	margin-top: 50px; /* 상단 여백 */
+}
+
+.bannerimg {
+	width: 100%;
+	max-width: 1000px; /* 이미지의 최대 너비 조정 */
+	height: auto;
+	display: block;
 }
