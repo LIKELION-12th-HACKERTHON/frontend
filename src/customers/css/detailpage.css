@@ -106,9 +106,14 @@
 
 .quantity-button {
 	font-size: 20px;
+	display: flex;
+	align-items: center;
+	text-align: center;
 	button {
 		padding: 8px 10px;
 		margin: 20px;
+		background-color: #B0D9B6;
+		border: solid 1px;
 	}
 	span {
 		text-align: center;
@@ -117,4 +122,8 @@
 
 .request-input {
 	width: 70%;
+}
+
+.time-label {
+	background-color: #B0D9B6;
 }

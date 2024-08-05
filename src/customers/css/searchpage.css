@@ -22,8 +22,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
 }
 
 .one-list:hover {
@@ -37,6 +38,8 @@
 .list-img {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 20vw;
   img {
     width: 100%;
     height: auto;
