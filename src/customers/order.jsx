@@ -12,8 +12,8 @@ const OrderForm = styled.div`
 `
 
 export default function Order({quantity}) {
-  const [ order, setOrder ] = useState(0); //주문 수량
-  const [ body, setBody ] = useState(''); //요청사항
+  const [ order, setOrder ] = useState(1); //주문 수량
+  const [ body, setBody ] = useState('없습니다'); //요청사항
   const [ time, setTime ] = useState();
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);

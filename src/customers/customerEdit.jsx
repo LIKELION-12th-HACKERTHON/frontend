@@ -3,6 +3,7 @@ import styled from "styled-components";
 import api from '../components/api';
 import AddressForm from '../components/addressform';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const EditButton = styled.button`
   border: none;
@@ -33,9 +34,9 @@ export default function CustomerEdit() {
   const [dong, setDong] = useState({});
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
+  const token = localStorage.getItem("accessToken")
 
   const getUserInfo = async () => {
-    const token = localStorage.getItem("accessToken")
     try {
       const response = await api.get('/member/info/', { hearders: {
         Authorization: `Bearer ${token}`}
@@ -57,7 +58,8 @@ export default function CustomerEdit() {
     getUserInfo()
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const data = {
       username,
       nickname,
@@ -70,7 +72,11 @@ export default function CustomerEdit() {
     }
     console.log(data)
     if(window.confirm('회원 정보를 수정하시겠습니까?')) {
-      api.patch(`/member/info/detail/${userInfo.id}`, data)
+      axios.patch(`https://ourvege.store/member/info/detail/${userInfo.id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then (() => {
         console.log('수정 완료');
         alert('회원 정보가 수정되었습니다.')

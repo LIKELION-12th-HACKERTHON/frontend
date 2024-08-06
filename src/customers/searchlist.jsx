@@ -66,7 +66,7 @@ export default function SearchList() {
         <div
         className="one-list"
         key={content.id}
-        onClick={() => handleClick(content.id)}
+        onClick={() => handleClick(content.user)}
         style={{ cursor: "pointer"}}
         >
           <div className="list-img">
