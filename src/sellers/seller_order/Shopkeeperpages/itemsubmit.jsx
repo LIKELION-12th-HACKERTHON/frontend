@@ -65,7 +65,7 @@ const Itemsubmit = () => {
 			console.log(response.data);
 			alert("상품이 등록되었습니다.");
 		} catch (error) {
-			console.error("Error submitting form:", error);
+			console.error("Error:", error.response ? error.response.data : error.message);
 			if (error.response && error.response.status === 401) {
 				alert("인증에 실패했습니다. 다시 로그인해주세요.");
 			} else {
