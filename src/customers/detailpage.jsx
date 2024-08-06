@@ -32,14 +32,13 @@ export default function Detailpage() {
 
   const getContent = () => {
     const token = localStorage.getItem("accessToken")
-    api.get(`/boss/post/${id}`, { hearders: {
+    api.get(`/customer/seller/${id}`, { hearders: {
       Authorization: `Bearer ${token}`}
     })
       .then((res) => {
         console.log('상세 조회 완료');
         console.log(res.data)
         setContent(res.data);
-        setQuantity(res.data.quantity);
       })
       .catch((err) => {
         console.error('에러: ', err)
@@ -54,6 +53,8 @@ export default function Detailpage() {
     const formattedNumber = new Intl.NumberFormat('en-US').format(number);
     return(formattedNumber)
   };
+
+  const imgPath = `https://ourveg.store${content.image}`
 
   //판매글 상세 조회에서 가져올 것
   return (
@@ -79,14 +80,24 @@ export default function Detailpage() {
           >로그아웃</span>
 				</div>
 			</nav>
-      <div className='store-info'>
+      <div>
+        
+      </div>
+      {/* <div className='store-info'>
         <h2>{content.nickname}</h2>
         <p><IoLocationOutline/>{content.city} {content.district} {content.dong} {content.detail_location}</p>
         <p><FaRegClock/>영업 종료 시간: {content.close}</p>
       </div>
       <div className='menu-info'>
         <div className='img-container'>
-          <img src={ content.img || defaultImage} alt='product-picture'/>
+          <img
+          src={`https://ourvege.store${content.image}`}
+					alt={content.product}
+					onError={(e) => {
+						console.error("Image load failed:", e.target.src);
+						e.target.src = defaultImage;
+					}}
+          />
         </div>
         <div className='info-container'>
           <p className='menu-name'>{content.product}</p>
@@ -94,9 +105,8 @@ export default function Detailpage() {
           <p>가격: {handleNumber(content.price)}원</p>
           <p>{content.body}</p>
         </div>
-        
       </div>
-      <Order quantity = {quantity}/>
+      <Order quantity = {quantity}/> */}
     </div>
   )
 }

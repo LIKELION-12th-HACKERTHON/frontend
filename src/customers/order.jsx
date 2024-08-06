@@ -12,8 +12,8 @@ const OrderForm = styled.div`
 `
 
 export default function Order({quantity}) {
-  const [ order, setOrder ] = useState(0); //주문 수량
-  const [ body, setBody ] = useState(''); //요청사항
+  const [ order, setOrder ] = useState(1); //주문 수량
+  const [ body, setBody ] = useState('없습니다'); //요청사항
   const [ time, setTime ] = useState();
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
@@ -61,6 +61,7 @@ export default function Order({quantity}) {
       const response = await api.post(`/customer/order/${id}/request/`, data, { hearders: {Authorization: `Bearer ${token}`}
       })
       console.log('응답 완료', response);
+      alert('주문이 완료되었습니다.')
       setOrder('0');
       setBody('');
       setTime();
@@ -83,11 +84,12 @@ export default function Order({quantity}) {
       <OrderForm>
         <h4>픽업 시간</h4>
         <div>
-        <label>
+        <label className='time-label'>
+          {/* 시간 10시부터 */}
           <select value={hour} onChange={handleHourChange}>
-            {[...Array(24)].map((_, i) => (
-              <option key={i + 1} value={i + 1}>
-                {i + 1}
+            {[...Array(12)].map((_, i) => (
+              <option key={i + 12} value={i + 12}>
+                {i + 12}
               </option>
             ))}
           </select>

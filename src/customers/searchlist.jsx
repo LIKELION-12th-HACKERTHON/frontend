@@ -12,7 +12,6 @@ const ProductInfo = styled.div`
   font-weight: 500;
 `
 
-
 export default function SearchList() {
   const { place } = useParams();
   const [ contents, setContents ] = useState([]);
@@ -23,10 +22,10 @@ export default function SearchList() {
   //const urlParams = new URLSearchParams(useLocation().search)
 
   //가격 천단위 ,
-  const handleNumber =(number) => {
-    const formattedNumber = new Intl.NumberFormat('en-US').format(number);
-    return(formattedNumber)
-  };
+  // const handleNumber =(number) => {
+  //   const formattedNumber = new Intl.NumberFormat('en-US').format(number);
+  //   return(formattedNumber)
+  // };
 
   const handleClick = (id) => {
     navigate(`/detail/${id}`);
@@ -67,18 +66,24 @@ export default function SearchList() {
         <div
         className="one-list"
         key={content.id}
-        onClick={() => handleClick(content.id)}
+        onClick={() => handleClick(content.user)}
         style={{ cursor: "pointer"}}
         >
           <div className="list-img">
-            <img src={content.image || defaultImage} alt={content.product}/>
+          <img
+          src={`https://ourvege.store${content.image}`}
+					alt={content.product}
+					onError={(e) => {
+						console.error("Image load failed:", e.target.src);
+						e.target.src = defaultImage;
+					}}
+          />
           </div>
           <div className="list-detail">
             <h3>{content.nickname}</h3>
             <p>{content.city} {content.district} {content.dong} {content.detail_location}</p>
             <ProductInfo>
-              <span>상품: {content.product}</span>
-              <span>{handleNumber(content.price)}원</span>
+              <span>가장 최근 업로드: {content.created_at}</span>
             </ProductInfo>
             
           </div>
