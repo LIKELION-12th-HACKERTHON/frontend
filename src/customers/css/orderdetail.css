@@ -1,0 +1,90 @@
+.order-detail-container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 2rem;
+	font-family: "Arial", sans-serif;
+}
+
+.order-detail-container h2 {
+	font-size: 1.8rem;
+	color: #333;
+	margin-bottom: 1.5rem;
+}
+
+.order-info {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.order-date,
+.order-product {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+	color: #555;
+}
+
+.icon {
+	margin-right: 0.5rem;
+	color: #4caf50;
+}
+
+.review-section {
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	padding: 1.5rem;
+}
+
+.star-rating {
+	font-size: 2rem;
+	color: #ffd700;
+	margin-bottom: 1rem;
+}
+
+.star {
+	cursor: pointer;
+	transition: color 0.2s;
+	height: 1.5rem;
+}
+
+.star:hover,
+.star.filled {
+	color: #ffc107;
+}
+
+.review-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.review-form textarea {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	min-height: 100px;
+	resize: vertical;
+}
+
+.review-form button {
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.review-form button:hover {
+	background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+	.order-detail-container {
+		padding: 1rem;
+	}
+}

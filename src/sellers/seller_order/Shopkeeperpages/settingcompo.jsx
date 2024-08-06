@@ -92,7 +92,7 @@ const Sellersettingcompo = () => {
 			<form onSubmit={handleSubmit} className='store-info22'>
 				<div className='info-group22'>
 					<h2>위치 정보</h2>
-					{["city", "district", "dong", "detail_location"].map((field) => (
+					{["city", "district", "dong"].map((field) => (
 						<p key={field}>
 							<strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
 							{isEditing ? (
