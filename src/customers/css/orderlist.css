@@ -1,0 +1,14 @@
+.orderlist-container {
+  width: 50vw;
+}
+.orderlist-container h2 {
+  font-size: 30px;
+  margin: 15px ;
+}
+
+.order-container {
+  margin: 30px 0;
+  padding: 30px;
+  background-color: #ededed;
+  border-radius: 5px;
+}

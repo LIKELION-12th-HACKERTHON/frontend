@@ -32,14 +32,13 @@ export default function Detailpage() {
 
   const getContent = () => {
     const token = localStorage.getItem("accessToken")
-    api.get(`/boss/post/${id}`, { hearders: {
+    api.get(`/customer/seller/${id}`, { hearders: {
       Authorization: `Bearer ${token}`}
     })
       .then((res) => {
         console.log('상세 조회 완료');
         console.log(res.data)
         setContent(res.data);
-        setQuantity(res.data.quantity);
       })
       .catch((err) => {
         console.error('에러: ', err)
@@ -81,7 +80,10 @@ export default function Detailpage() {
           >로그아웃</span>
 				</div>
 			</nav>
-      <div className='store-info'>
+      <div>
+        
+      </div>
+      {/* <div className='store-info'>
         <h2>{content.nickname}</h2>
         <p><IoLocationOutline/>{content.city} {content.district} {content.dong} {content.detail_location}</p>
         <p><FaRegClock/>영업 종료 시간: {content.close}</p>
@@ -99,14 +101,12 @@ export default function Detailpage() {
         </div>
         <div className='info-container'>
           <p className='menu-name'>{content.product}</p>
-          {/* 0개이면 품절로 뜨개 */}
           <p>현재 수량: {content.quantity}개</p>
           <p>가격: {handleNumber(content.price)}원</p>
           <p>{content.body}</p>
         </div>
-        
       </div>
-      <Order quantity = {quantity}/>
+      <Order quantity = {quantity}/> */}
     </div>
   )
 }

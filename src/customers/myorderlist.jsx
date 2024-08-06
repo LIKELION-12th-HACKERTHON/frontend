@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../components/api';
 import { useNavigate } from 'react-router-dom';
+import './css/orderlist.css';
 
 export default function MyorderList() {
   const [orderlist, setOrderlist] = useState([]);
@@ -26,15 +27,17 @@ export default function MyorderList() {
   }
 
   return (
-    <div>
+    <div className='orderlist-container'>
+      <h2>구매 목록</h2>
+      <hr></hr>
       {orderlist.map((order) => (
         <div
         key={order.id}
         onClick={() => handleClick(order.id)}
         style={{ cursor: "pointer"}}
+        className='order-container'
         >
           <div>
-            <p>{order.customer_nickname}</p>
             <p>{order.nickname}</p>
             <p>{order.progress}</p>
           </div>
