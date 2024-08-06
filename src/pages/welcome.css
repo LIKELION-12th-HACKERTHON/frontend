@@ -1,0 +1,36 @@
+.Welcomediv {
+	text-align: center;
+	font-family: "Noto Sans KR", sans-serif;
+	color: #333;
+	/* background-color: ; */
+}
+
+section {
+	min-height: 70vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 4rem 2rem;
+}
+
+h1,
+h2 {
+	font-weight: 700;
+	margin-bottom: 2rem;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2.5rem;
+}
+
+p {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	max-width: 800px;
+	margin: 0 auto 1rem;
+}

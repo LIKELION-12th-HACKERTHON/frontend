@@ -3,6 +3,7 @@ import "../css/homepage.css";
 import FormLogin from "./formlogin";
 import vegelogo from "/src/sellers/sellerphotos/vege_logo.png";
 import banner1 from "../sellers/sellerphotos/banner1.png";
+import Welcome from "./welcome";
 
 export default function MainPage() {
 	return (
@@ -36,6 +37,7 @@ export default function MainPage() {
 						</main>
 					</div>
 				</div>
+				<Welcome />
 			</div>
 		</div>
 	);

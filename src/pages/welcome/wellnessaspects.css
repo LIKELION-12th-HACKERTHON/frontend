@@ -1,0 +1,85 @@
+.wellness-aspects {
+	padding: 4rem;
+	background-color: #f8f8f8;
+}
+
+.wellness-aspects h2 {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.aspects-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.aspect {
+	background-color: white;
+	border-radius: 8px;
+	padding: 2rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.aspect-icon {
+	color: #4caf50; /* 초록색 */
+	margin-bottom: 1rem;
+}
+
+.aspect h3 {
+	margin-bottom: 2rem;
+}
+
+.aspect ul {
+	text-align: center;
+	padding: 0px 1.5rem;
+	margin: 0;
+	list-style: none;
+}
+
+.aspect li {
+	margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+	.aspects-container {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto auto auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.aspects-container {
+		grid-template-columns: 1fr;
+	}
+
+	.aspect:nth-child(5) {
+		grid-column: auto;
+	}
+}
+
+.wellness-aspects {
+	padding: 2rem;
+	background-color: #f8f8f8;
+}
+
+.wellness-aspects h2 {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.additional-aspects-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+
+	margin: 0 auto;
+	width: 60vw;
+}
