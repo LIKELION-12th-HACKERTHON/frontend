@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import api from '../components/api';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const OrderForm = styled.div`
   display: flex;
 	justify-content: space-between;
-	width: 70%;
+	width: 75%;
 	max-width: 800px;
   margin-bottom: 20px;
 `
+const OrderButton = styled.button`
+  width: 50%;
+  height: 30px;
+  background-color: #B0D9B6;
+  border: solid #77A68B;
+`
 
-export default function Order({quantity}) {
+export default function Order({quantity, id}) {
   const [ order, setOrder ] = useState(1); //주문 수량
-  const [ body, setBody ] = useState('없습니다'); //요청사항
+  const [ body, setBody ] = useState('없음'); //요청사항
   const [ time, setTime ] = useState();
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
-  const {id} = useParams();
+  const navigate = useNavigate();
+  // const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // const adjustTextareaHeight = () => {
+  //   const textarea = textareaRef.current;
+  //   if (textarea) {
+  //     textarea.style.height = '1px';
+  //     textarea.style.height = `${textarea.scrollHeight}px`;
+  //   }
+  // }
 
   function handleMinus() {
     if (order > 0) {
@@ -57,14 +72,16 @@ export default function Order({quantity}) {
       pickup_time: time,
       body
     };
+    console.log(data)
     try {
       const response = await api.post(`/customer/order/${id}/request/`, data, { hearders: {Authorization: `Bearer ${token}`}
       })
       console.log('응답 완료', response);
-      alert('주문이 완료되었습니다.')
+      alert('주문이 완료되었습니다. 결제는 가게에서 수령하면서 해주세요!')
       setOrder('0');
       setBody('');
       setTime();
+      navigate('/mypage/orderhistory')
     } catch (error) {
       console.error('에러: ', error);
     }
@@ -83,18 +100,7 @@ export default function Order({quantity}) {
       </OrderForm>
       <OrderForm>
         <h4>픽업 시간</h4>
-        <div>
-        <label className='time-label'>
-          {/* 시간 10시부터 */}
-          <select value={hour} onChange={handleHourChange}>
-            {[...Array(12)].map((_, i) => (
-              <option key={i + 12} value={i + 12}>
-                {i + 12}
-              </option>
-            ))}
-          </select>
-          시
-        </label>
+        <div className='label-container'>
         <label>
           <select value={minute} onChange={handleMinuteChange}>
             {[0, 10, 20, 30, 40, 50].map((value) => (
@@ -105,20 +111,31 @@ export default function Order({quantity}) {
           </select>
           분
         </label>
+        <label>
+          {/* 시간 10시부터 */}
+          <select value={hour} onChange={handleHourChange}>
+            {[...Array(6)].map((_, i) => (
+              <option key={i + 19} value={i + 19}>
+                {i + 19}
+              </option>
+            ))}
+          </select>
+          시
+        </label>
         </div>
       </OrderForm>
       <OrderForm>
         <h4>요청사항</h4>
         {/* 토글로 몇가지 제안해도 괜찮을 듯? */}
-        <input
+        <textarea
           className='request-input'
           type="text"
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placehorder="요청사항을 적어주세요"
+          placehorder="요청사항을 꼭 입력해주세요"
         />
       </OrderForm>
-      <button onClick={postOrder}>주문</button>
+      <OrderButton onClick={postOrder}>주문</OrderButton>
     </div>
   )
 }

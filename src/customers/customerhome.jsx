@@ -1,7 +1,7 @@
 import React from "react";
 import '../css/customerhome.css';
 import { Outlet, useNavigate } from "react-router-dom";
-import homeimg from "./img/customerhomeBanner1.jpg";
+import homeimg from "./img/customer_banner_new.png";
 import vegelogo from "../sellers/sellerphotos/vege_logo.png"
 
 export default function CustomerHome() {
