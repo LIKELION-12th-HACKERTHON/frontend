@@ -14,6 +14,7 @@ import ReviewPage from "./sellers/seller_order/Shopkeeperpages/ReviewPage.jsx";
 import CustomerProfile from "./customers/customerProfile.jsx";
 import CustomerEdit from "./customers/customerEdit.jsx";
 import MyorderList from "./customers/myorderlist.jsx";
+import OrderDetail from "./customers/orderDetail.jsx";
 
 function App() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 					<Route path='profile' element={<CustomerProfile/>}/>
 					<Route path='edit' element={<CustomerEdit/>}/>
 					<Route path='orderhistory' element={<MyorderList/>}/>
+					<Route path="orderhistory/detail/:id" element={<OrderDetail/>}/>
 				</Route>
 				<Route path='/shopkeeper' element={<Shopkeeper />} />
 				<Route path='/detail/:id' element={<Detailpage />} />
