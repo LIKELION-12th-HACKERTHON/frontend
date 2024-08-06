@@ -48,6 +48,7 @@
 .review-comment {
 	font-style: italic;
 	line-height: 1.4;
+	font-size: 1rem;
 }
 
 .loading,

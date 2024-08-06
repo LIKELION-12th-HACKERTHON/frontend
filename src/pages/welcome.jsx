@@ -10,6 +10,7 @@ import "./welcome.css";
 function Welcome() {
 	return (
 		<div className='Welcomediv'>
+			<div className='grayscroll'>▽ scroll down ▽</div>
 			<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
 				<Element name='definition'>
 					<WellnessDefinition />

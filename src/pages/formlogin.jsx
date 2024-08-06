@@ -292,6 +292,7 @@ export default function FormLogin() {
 						<div className='thdiv'>비밀번호</div>
 						<input
 							name='password'
+							type='password'
 							placeholder='password'
 							autoComplete='off'
 							onChange={handleChange}

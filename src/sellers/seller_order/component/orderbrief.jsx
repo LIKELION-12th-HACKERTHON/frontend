@@ -10,7 +10,9 @@ const OrderBrief = () => {
 	const reviewCount = reviews.length;
 
 	// 이 값들은 실제 데이터로 대체해야 합니다
-	const todayOrders = 15;
+	const waitingOrders = getWaitingOrdersCount();
+	const processingOrders = getProcessingOrdersCount();
+	let todayOrders = waitingOrders + processingOrders;
 
 	return (
 		<div className='order-brief'>
